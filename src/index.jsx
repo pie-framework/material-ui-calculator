@@ -1,13 +1,35 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import Calculator from './calculator';
+import reduce from '@pie-labs/calculator-reducer';
+import debug from 'debug';
 
+const log = debug('material-ui-calculator');
 
-class Calculator extends React.Component {
+export default class StatefulCalculator extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      calculator: { value: '' }
+    }
+  }
+
+  onInput = value => {
+    const calculator = reduce(this.state.calculator, value);
+    log('[onInput] update: ', calculator)
+    this.setState({ calculator });
+  }
 
   render() {
+    const { calculator } = this.state;
     return (
-      <div>calculator here...</div>
+      <Calculator
+        value={calculator}
+        onInput={this.onInput}
+      />
     );
   }
 }
 
-export default Calculator;
+StatefulCalculator.propTypes = {}

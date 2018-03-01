@@ -1,4 +1,5 @@
 module.exports = {
+  mode: 'development',
   devtool: 'eval-source-map',
   context: __dirname,
   entry: './entry.jsx',
@@ -7,10 +8,22 @@ module.exports = {
     path: __dirname
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx$/,
-        loader: 'babel-loader',
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              babelrc: false,
+              presets: [
+                'react',
+                'env',
+                'stage-0'
+              ]
+            }
+          }
+        ]
       }
     ]
   },
