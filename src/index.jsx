@@ -11,13 +11,18 @@ export default class StatefulCalculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      calculator: { expr: '' }
+      calculator: { expr: '', angleMode: 'rad' }
     }
   }
 
   onInput = value => {
     const calculator = reduce(this.state.calculator, value);
     log('[onInput] update: ', calculator)
+    this.setState({ calculator });
+  }
+
+  onAngleModeChange = m => {
+    const calculator = { ...this.state.calculator, angleMode: m }
     this.setState({ calculator });
   }
 
@@ -28,6 +33,7 @@ export default class StatefulCalculator extends React.Component {
       <Calculator
         value={calculator}
         onInput={this.onInput}
+        onAngleModeChange={this.onAngleModeChange}
         mode={mode}
       />
     );

@@ -14,17 +14,22 @@ class Calculator extends React.Component {
       classes,
       mode,
       onInput,
+      onAngleModeChange,
       value } = this.props;
 
     return (
       <div className={classes.calculator}>
-        <Display value={value.expr} />
+        <Display
+          value={value.expr}
+          angleMode={value.angleMode}
+          onAngleModeChange={onAngleModeChange} />
         <div className={classes.padHolder}>
           <Basic
             className={classes.basic}
             onInput={onInput} />
           {mode === 'scientific' && (
-            <Scientific onInput={onInput} />
+            <Scientific
+              onInput={onInput} />
           )}
         </div>
       </div>

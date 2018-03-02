@@ -14,22 +14,22 @@ const input = value => ({ label: value, value });
 const items = [
   { label: 'C', value: 'clear' },
   { label: '±', value: 'plus-minus' },
-  { label: '%', value: 'percent' },
+  '%',
   { label: '&#247;', value: '/', kind: 'operator' },
-  input('7'),
-  input('8'),
-  input('9'),
+  '7',
+  '8',
+  '9',
   { label: '&#215;', value: '*', kind: 'operator' },
-  input('4'),
-  input('5'),
-  input('6'),
+  '4',
+  '5',
+  '6',
   { label: '-', value: '-', kind: 'operator' },
-  input('1'),
-  input('2'),
-  input('3'),
+  '1',
+  '2',
+  '3',
   { label: '+', value: '+', kind: 'operator' },
-  input('0'),
-  input('.'),
+  '0',
+  '.',
   { label: '=', value: 'equals', kind: 'operator' },
 ]
 
@@ -43,7 +43,8 @@ export class Basic extends React.Component {
       <div className={classes.pad}>
         {items.map((i, index) => {
 
-          const positionStyle = (i.label === '0') ? {
+          const props = typeof i === 'string' ? { label: i, value: i } : i;
+          const positionStyle = (props.label === '0') ? {
             gridColumn: '1/3'
           } : {};
 
@@ -54,7 +55,7 @@ export class Basic extends React.Component {
               theme={{
                 root: classes[i.kind]
               }}
-              {...i}
+              {...props}
               onClick={onInput} />
           )
         })}
