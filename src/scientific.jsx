@@ -3,28 +3,28 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Pad from './pad';
 import classNames from 'classnames';
-import { AngleInput, UnaryInput } from '@pie-labs/calculator-reducer';
+import { AngleInput, UnaryInput, Inputs, LogInput } from '@pie-labs/calculator-reducer';
 
 const items = [
   '(',
   ')',
-  'π',
-  'log',
+  Inputs.PI,
+  LogInput.LOG,
   AngleInput.SIN,
   AngleInput.COS,
   AngleInput.TAN,
-  'ln',
+  LogInput.NATURAL_LOG,
   AngleInput.ASIN,
   AngleInput.ACOS,
   AngleInput.ATAN,
-  { label: 'n!', value: '!' },
+  { label: 'n!', value: Inputs.FACTORIAL },
   { label: '√', value: UnaryInput.SQUARE_ROOT },
   { label: 'x²', value: UnaryInput.SQUARE },
   { label: 'x³', value: UnaryInput.CUBE },
   { label: 'x<sup>y</sup>', value: '^' },
-  '1/x',
-  'e',
-  'abs',
+  Inputs.FRACTION,
+  Inputs.EXPONENT,
+  UnaryInput.ABS,
 ]
 
 export class Scientific extends React.Component {
