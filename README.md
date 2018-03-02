@@ -10,8 +10,10 @@ Should look something like this when ready:
 
 ![./sample.png](./sample.png)
 
-
 # TODOS
 
-* focus + keyboard input
+* hook up all functions
+* display is input
 * tab
+* tests
+
