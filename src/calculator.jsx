@@ -9,11 +9,6 @@ const log = debug('material-ui-calculator:calculator');
 
 class Calculator extends React.Component {
 
-  onClick = () => {
-
-
-  }
-
   render() {
     const {
       classes,
@@ -21,15 +16,16 @@ class Calculator extends React.Component {
       onInput,
       value } = this.props;
 
-    log('value: ', value);
     return (
       <div className={classes.calculator}>
-        <Display value={value.value} />
+        <Display value={value.expr} />
         <div className={classes.padHolder}>
           <Basic
             className={classes.basic}
             onInput={onInput} />
-          {mode === 'scientific' && <Scientific />}
+          {mode === 'scientific' && (
+            <Scientific onInput={onInput} />
+          )}
         </div>
       </div>
     );

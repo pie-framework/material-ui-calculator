@@ -1,71 +1,77 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
-import NumberPad from './number-pad';
-import Button from 'material-ui/Button';
 import classNames from 'classnames';
-import Typography from 'material-ui/Typography';
-import IconButton from 'material-ui/IconButton';
-import Backspace from 'material-ui-icons/Backspace';
 import debug from 'debug';
-import NewPad from './new-pad';
+import IconButton from 'material-ui/IconButton';
+import Pad from './pad';
 
 const log = debug('material-ui-calculator:basic');
 
-const Pad = withStyles(theme => ({
-  pad: {
-    flex: '1',
-    minWidth: 80
-  }
-}))(({ classes, children, onClick }) => (
-  <IconButton
-    onClick={onClick}
-    className={classes.pad}>{children}</IconButton>
-));
 
-const BasicOperators = withStyles(theme => ({
-  operators: {
-    display: 'flex',
-    flexDirection: 'column',
-    backgroundColor: theme.palette.secondary[100]
-  }
-}))(({ classes, onDelete, onInput }) => {
-  return (
-    <div className={classes.operators}>
-      <Pad onClick={onDelete}><Backspace /></Pad>
-      <Pad onClick={() => onInput('+')}>+</Pad>
-      <Pad onClick={() => onInput('-')}>-</Pad>
-      <Pad onClick={() => onInput('/')}>&#247;</Pad>
-      <Pad onClick={() => onInput('*')}>&#215;</Pad>
-    </div>
-  );
-});
+const input = value => ({ label: value, value });
+
+const items = [
+  { label: 'C', value: 'clear' },
+  { label: '±', value: 'plus-minus' },
+  { label: '%', value: 'percent' },
+  { label: '&#247;', value: '/', kind: 'operator' },
+  input('7'),
+  input('8'),
+  input('9'),
+  { label: '&#215;', value: '*', kind: 'operator' },
+  input('4'),
+  input('5'),
+  input('6'),
+  { label: '-', value: '-', kind: 'operator' },
+  input('1'),
+  input('2'),
+  input('3'),
+  { label: '+', value: '+', kind: 'operator' },
+  input('0'),
+  input('.'),
+  { label: '=', value: 'equals', kind: 'operator' },
+]
 
 export class Basic extends React.Component {
-
   render() {
-    const {
-      className,
-      classes,
-      onInput
-    } = this.props;
+    const { classes, onInput, className } = this.props;
 
-    const names = classNames(classes.basic, className);
+    const names = classNames(classes.pad, className);
+
     return (
-      <NewPad onInput={onInput} />
+      <div className={classes.pad}>
+        {items.map((i, index) => {
+
+          const positionStyle = (i.label === '0') ? {
+            gridColumn: '1/3'
+          } : {};
+
+          return (
+            <Pad
+              key={index}
+              style={positionStyle}
+              theme={{
+                root: classes[i.kind]
+              }}
+              {...i}
+              onClick={onInput} />
+          )
+        })}
+      </div>
     );
   }
 }
 
-Basic.propTypes = {}
-
-const styles = theme => ({
-  basic: {
-    display: 'flex'
+export default withStyles(theme => ({
+  pad: {
+    flex: 0.5,
+    gridGap: '1px',
+    width: '100%',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(4, 1fr)'
   },
-  numberPad: {
-    flex: '1'
+  operator: {
+    backgroundColor: theme.palette.primary[400]
   }
-});
-
-export default withStyles(styles)(Basic);
+}))(Basic);

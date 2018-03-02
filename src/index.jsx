@@ -11,7 +11,7 @@ export default class StatefulCalculator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      calculator: { value: '' }
+      calculator: { expr: '' }
     }
   }
 
@@ -23,10 +23,12 @@ export default class StatefulCalculator extends React.Component {
 
   render() {
     const { calculator } = this.state;
+    const { mode } = this.props;
     return (
       <Calculator
         value={calculator}
         onInput={this.onInput}
+        mode={mode}
       />
     );
   }
