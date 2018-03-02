@@ -17,13 +17,13 @@ const items = [
   AngleInput.ASIN,
   AngleInput.ACOS,
   AngleInput.ATAN,
-  'n!',
+  { label: 'n!', value: '!' },
   { label: '√', value: UnaryInput.SQUARE_ROOT },
   { label: 'x²', value: UnaryInput.SQUARE },
   { label: 'x³', value: UnaryInput.CUBE },
   { label: 'x<sup>y</sup>', value: '^' },
   '1/x',
-  'eˣ',
+  'e',
   'abs',
 ]
 
