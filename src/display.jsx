@@ -4,16 +4,90 @@ import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import classNames from 'classnames';
 import AngleMode from './angle-mode';
+import { TextField } from 'material-ui';
+
+
+const Field = withStyles(theme => ({
+  root: {
+    fontSize: '40px'
+  },
+  input: {
+    textAlign: 'right',
+    padding: 0,
+    margin: 0
+  }
+}))(({ value,
+  classes,
+  onFocus,
+  onBlur,
+  onChange,
+  onEnter,
+  inputRef }) => {
+
+  const onKeyDown = event => {
+    if (event.key === 'Enter') {
+      onEnter();
+    }
+  }
+
+  return (
+
+    <TextField
+      inputRef={inputRef}
+      value={value}
+      onFocus={onFocus}
+      onBlur={onBlur}
+      onChange={onChange}
+      onKeyDown={onKeyDown}
+      InputProps={{
+        disableUnderline: true,
+        classes: {
+          root: classes.root,
+          input: classes.input
+        }
+      }} />
+  )
+});
 
 export class Display extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      focused: false
+    }
+  }
+
+  onFocus = () => {
+    this.setState({ focused: true });
+  }
+
+  onBlur = () => {
+    this.setState({ focused: false });
+  }
+
   render() {
-    const { classes, value, angleMode, onAngleModeChange } = this.props;
+    const {
+      classes,
+      value,
+      angleMode,
+      onAngleModeChange,
+      onChange,
+      onEnter,
+      inputRef } = this.props;
+
+    const { focused } = this.state;
+    const names = classNames(classes.display, focused && classes.focused);
     return (
-      <div className={classes.display}>
+      <div className={names}>
         <AngleMode angleMode={angleMode} onChange={onAngleModeChange} />
         <div className={classes.expr}>
-          <Typography type="display1">{value || '0'}</Typography>
+          <Field value={value}
+            onFocus={this.onFocus}
+            onBlur={this.onBlur}
+            onChange={onChange}
+            onEnter={onEnter}
+            inputRef={inputRef} />
         </div>
       </div>
     );
@@ -30,7 +104,12 @@ const styles = theme => ({
     textAlign: 'right',
     zIndex: 1,
     position: 'relative',
-    boxShadow: '0 3px 3px rgba(0, 0, 0, 0.1)'
+    boxShadow: '0 3px 3px rgba(0, 0, 0, 0.1)',
+    borderBottom: 'solid 1px rgba(0,0,0,0.0)'
+  },
+  focused: {
+    backgroundColor: theme.palette.primary[50],
+    borderBottom: 'solid 1px rgba(0,0,0,0.2)'
   },
   expr: {
     flex: 1

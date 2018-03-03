@@ -8,9 +8,6 @@ import Pad from './pad';
 
 const log = debug('material-ui-calculator:basic');
 
-
-const input = value => ({ label: value, value });
-
 const items = [
   { label: 'C', value: 'clear' },
   { label: '±', value: 'plus-minus' },

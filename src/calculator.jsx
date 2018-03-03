@@ -9,27 +9,38 @@ const log = debug('material-ui-calculator:calculator');
 
 class Calculator extends React.Component {
 
+  handleInput = (i) => {
+    const { onInput } = this.props;
+    onInput(i);
+    this.input.focus();
+  }
+
   render() {
     const {
       classes,
       mode,
       onInput,
       onAngleModeChange,
+      onChange,
+      onEnter,
       value } = this.props;
 
     return (
       <div className={classes.calculator}>
         <Display
+          inputRef={r => this.input = r}
           value={value.expr}
           angleMode={value.angleMode}
-          onAngleModeChange={onAngleModeChange} />
+          onAngleModeChange={onAngleModeChange}
+          onChange={onChange}
+          onEnter={onEnter} />
         <div className={classes.padHolder}>
           <Basic
             className={classes.basic}
-            onInput={onInput} />
+            onInput={this.handleInput} />
           {mode === 'scientific' && (
             <Scientific
-              onInput={onInput} />
+              onInput={this.handleInput} />
           )}
         </div>
       </div>

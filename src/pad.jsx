@@ -26,13 +26,19 @@ const Pad = withStyles(theme => ({
   const names = classNames(classes.pad, theme && theme.root);
 
 
+  const handleClick = e => {
+    // e.preventDefault();
+    onClick(value);
+  }
+
   return (
     <div
       style={style}
-      className={names} >
+      className={names}>
       <IconButton
+        tabIndex="-1"
         className={classes.button}
-        onClick={() => onClick(value)}>
+        onClick={handleClick}>
         <div dangerouslySetInnerHTML={{ __html: label }} />
       </IconButton>
     </div>
