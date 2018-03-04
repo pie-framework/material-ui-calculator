@@ -5,6 +5,21 @@ import debug from 'debug';
 
 const log = debug('@pie-labs:material-ui-calculator');
 
+const map = {
+  0: '⁰',
+  1: '¹',
+  2: '²',
+  3: '³',
+  4: '⁴',
+  5: '⁵',
+  6: '⁶',
+  7: '⁷',
+  8: '⁸',
+  9: '⁹',
+}
+
+const getSuperscript = (char) => map[char];
+
 export default class extends React.Component {
 
 
@@ -71,6 +86,30 @@ export default class extends React.Component {
     }
   }
 
+  onKeyDown = e => {
+    log('[onKeyDown] e.key', e.key);
+    const { superscript, value, onChange } = this.props;
+    if (superscript) {
+
+      if (superscript.test(e.key)) {
+        e.preventDefault();
+        e.stopPropagation();
+        const sv = getSuperscript(e.key);
+        if (sv) {
+          const update = `${value}${sv}`;
+          onChange({
+            target: {
+              value: update,
+              selectionStart: update.length,
+              selectionEnd: update.length
+            }
+          });
+        }
+      }
+    }
+
+  }
+
   render() {
 
     const { value } = this.props;
@@ -78,6 +117,7 @@ export default class extends React.Component {
       <TextField
         inputRef={this.inputRef}
         onKeyUp={this.onKeyUp}
+        onKeyDown={this.onKeyDown}
         value={value}
         onChange={this.onChange}
         onClick={this.onClick}
