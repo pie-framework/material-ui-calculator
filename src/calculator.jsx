@@ -22,6 +22,7 @@ class Calculator extends React.Component {
       onInput,
       onAngleModeChange,
       onChange,
+      onSelectionChange,
       onEnter,
       value } = this.props;
 
@@ -33,6 +34,7 @@ class Calculator extends React.Component {
           angleMode={value.angleMode}
           onAngleModeChange={onAngleModeChange}
           onChange={onChange}
+          onSelectionChange={onSelectionChange}
           onEnter={onEnter} />
         <div className={classes.padHolder}>
           <Basic

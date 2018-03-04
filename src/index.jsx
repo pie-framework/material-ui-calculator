@@ -1,25 +1,55 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Calculator from './calculator';
 import reduce, { Inputs } from '@pie-labs/calculator-reducer';
 import debug from 'debug';
+import SelectableInput from './selectable-input';
+import Scientific from './scientific';
+export { SelectableInput }
 
-const log = debug('material-ui-calculator');
+const log = debug('@pie-labs:material-ui-calculator');
 
+/** 1. an input with 
+ * selectionStart
+ * selectionEnd
+ * value
+ * 
+ * onSelectionChange
+ * onValueChange
+ */
+
+const insertAt = (src, position, value) => {
+  return [src.slice(0, position), value, src.slice(position)].join('');
+}
 
 export default class StatefulCalculator extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      calculator: { expr: '', angleMode: 'rad' }
+      expr: '',
+      angleMode: 'rad',
+      selectionStart: 0,
+      selectionEnd: 0
     }
   }
 
   onInput = value => {
-    const calculator = reduce(this.state.calculator, value);
-    log('[onInput] update: ', calculator)
-    this.setState({ calculator });
+    log('[onInput]: ', value);
+    switch (value) {
+
+      case '^': {
+        const e = insertAt(this.state.expr, this.state.selectionStart, 'ʸ');
+        this.setState({
+          expr: e,
+          selectionStart: this.state.selectionStart,
+          selectionEnd: this.state.selectionEnd + 1
+        });
+        this.input.focus();
+      }
+    }
+    // const calculator = reduce(this.state.calculator, value);
+    // log('[onInput] update: ', calculator)
+    // this.setState({ calculator });
   }
 
   onAngleModeChange = m => {
@@ -35,24 +65,39 @@ export default class StatefulCalculator extends React.Component {
   }
 
   onChange = e => {
-    const calculator = { ...this.state.calculator, expr: e.target.value };
-    this.setState({ calculator });
+    this.setState({
+      expr: e.target.value,
+      selectionStart: e.target.selectionStart,
+      selectionEnd: e.target.selectionEnd
+    });
+  }
+
+  onSelectionChange = update => {
+    this.setState({
+      selectionStart: update.selectionStart,
+      selectionEnd: update.selectionEnd,
+    });
   }
 
   render() {
-    const { calculator } = this.state;
-    const { mode } = this.props;
+    const { angleMode, expr, selectionStart, selectionEnd } = this.state;
 
-    log('expr: ', calculator.expr);
     return (
-      <Calculator
-        value={calculator}
-        onInput={this.onInput}
-        onAngleModeChange={this.onAngleModeChange}
-        onChange={this.onChange}
-        onEnter={this.onEnter}
-        mode={mode}
-      />
+      <div>
+        {JSON.stringify(this.state, null, '  ')}
+        <div>
+          <SelectableInput
+            inputRef={r => this.input = r}
+            onChange={this.onChange}
+            onSelectionChange={this.onSelectionChange}
+            value={expr}
+            selectionStart={selectionStart}
+            selectionEnd={selectionEnd}
+            onKeyDown={this.onKeyDown} />
+        </div>
+        <Scientific
+          onInput={this.onInput} />
+      </div>
     );
   }
 }

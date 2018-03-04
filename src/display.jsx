@@ -4,8 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import Typography from 'material-ui/Typography';
 import classNames from 'classnames';
 import AngleMode from './angle-mode';
-import { TextField } from 'material-ui';
-
+import SelectableInput from './selectable-input';
 
 const Field = withStyles(theme => ({
   root: {
@@ -21,6 +20,7 @@ const Field = withStyles(theme => ({
   onFocus,
   onBlur,
   onChange,
+  onSelectionChange,
   onEnter,
   inputRef }) => {
 
@@ -32,12 +32,13 @@ const Field = withStyles(theme => ({
 
   return (
 
-    <TextField
+    <SelectableInput
       inputRef={inputRef}
       value={value}
       onFocus={onFocus}
       onBlur={onBlur}
       onChange={onChange}
+      onSelectionChange={onSelectionChange}
       onKeyDown={onKeyDown}
       InputProps={{
         disableUnderline: true,
@@ -73,6 +74,7 @@ export class Display extends React.Component {
       angleMode,
       onAngleModeChange,
       onChange,
+      onSelectionChange,
       onEnter,
       inputRef } = this.props;
 
@@ -86,6 +88,7 @@ export class Display extends React.Component {
             onFocus={this.onFocus}
             onBlur={this.onBlur}
             onChange={onChange}
+            onSelectionChange={onSelectionChange}
             onEnter={onEnter}
             inputRef={inputRef} />
         </div>
