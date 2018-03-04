@@ -40,13 +40,20 @@ export default class extends React.Component {
   onChange = event => {
     log('[onChange]');
     const { onChange } = this.props;
-    onChange(event)
+    //how to intercept the input and superscript if needed?
+    onChange({
+      target: {
+        value: '?',
+        selectionStart: event.target.selectionStart,
+        selectionEnd: event.target.selectionEnd
+      }
+    })
   }
 
   getUpdate = () => this.input && ({
     selectionStart: this.input.selectionStart,
     selectionEnd: this.input.selectionEnd
-  })
+  });
 
   onClick = event => {
     const { onSelectionChange } = this.props;

@@ -35,18 +35,32 @@ export default class StatefulCalculator extends React.Component {
 
   onInput = value => {
     log('[onInput]: ', value);
+    const { expr, selectionStart, selectionEnd } = this.state;
     switch (value) {
 
       case '^': {
-        const e = insertAt(this.state.expr, this.state.selectionStart, 'ʸ');
+        const e = insertAt(expr, selectionStart, 'ʸ');
+
         this.setState({
           expr: e,
-          selectionStart: this.state.selectionStart,
-          selectionEnd: this.state.selectionEnd + 1
+          selectionStart,
+          selectionEnd: selectionEnd + 1,
+          superscript: /[0-9]/
         });
-        this.input.focus();
+        break;
+      }
+      case 'sin': {
+        const e = insertAt(expr, selectionStart, 'sin()');
+        this.setState({
+          expr: e,
+          selectionStart: selectionStart + 4,
+          selectionEnd: selectionEnd + 4
+        });
       }
     }
+
+
+    this.input.focus();
     // const calculator = reduce(this.state.calculator, value);
     // log('[onInput] update: ', calculator)
     // this.setState({ calculator });
@@ -68,7 +82,8 @@ export default class StatefulCalculator extends React.Component {
     this.setState({
       expr: e.target.value,
       selectionStart: e.target.selectionStart,
-      selectionEnd: e.target.selectionEnd
+      selectionEnd: e.target.selectionEnd,
+      superscript: false
     });
   }
 
@@ -80,7 +95,7 @@ export default class StatefulCalculator extends React.Component {
   }
 
   render() {
-    const { angleMode, expr, selectionStart, selectionEnd } = this.state;
+    const { angleMode, expr, selectionStart, selectionEnd, superscript } = this.state;
 
     return (
       <div>
@@ -93,7 +108,8 @@ export default class StatefulCalculator extends React.Component {
             value={expr}
             selectionStart={selectionStart}
             selectionEnd={selectionEnd}
-            onKeyDown={this.onKeyDown} />
+            onKeyDown={this.onKeyDown}
+            superscript={superscript} />
         </div>
         <Scientific
           onInput={this.onInput} />

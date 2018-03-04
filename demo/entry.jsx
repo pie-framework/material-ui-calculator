@@ -55,6 +55,7 @@ class Demo extends React.Component {
           <p>Selectable Input: </p>
           <Button onClick={() => this.si.focus()}>focus</Button>
           <SelectableInput
+            superscript={/[0-9]/}
             ref={r => this.si = r}
             value={selectable.value}
             onChange={this.onChange}
@@ -65,7 +66,7 @@ class Demo extends React.Component {
 
         </div>
         <div>
-          <Calculator mode="scientific" />
+          {/* <Calculator mode="scientific" /> */}
         </div>
       </div>)
   }
