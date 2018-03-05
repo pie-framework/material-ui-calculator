@@ -8,12 +8,13 @@
   "main": "src/index.jsx",
   "dependencies": {
     "@pie-labs/calculator-reducer": "^0.0.1",
+    "classnames": "^2.2.5",
+    "lodash": "^4.17.5",
     "material-ui": "1.0.0-beta.27",
     "material-ui-icons": "^1.0.0-beta.35",
-    "react": "^15.6.1",
-    "lodash": "^4.17.5",
-    "classnames": "^2.2.5",
-    "mathjs": "^4.0.0"
+    "mathjs": "^4.0.0",
+    "nearley": "^2.12.1",
+    "react": "^15.6.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
