@@ -26,6 +26,25 @@ const INPUTS = [
     passthrough: true
   },
   {
+    match: /\./,
+    passthrough: true
+    // emit: (expr, selectionStart, selectionEnd) => {
+    //   if (expr.indexOf('.') === -1) {
+    //     return {
+    //       value: insertAt(expr, { start: selectionStart, end: selectionEnd }, '.'),
+    //       selectionStart: selectionStart + 1,
+    //       selectionEnd: selectionEnd + 1
+    //     }
+    //   } else {
+    //     return {
+    //       value: expr,
+    //       selectionStart,
+    //       selectionEnd
+    //     }
+    //   }
+    // }
+  },
+  {
     match: /[0-9]/,
     passthrough: true
   },
@@ -148,15 +167,21 @@ export const handleInput = (input, value, superscript, selectionStart, selection
       }
     } else {
       log('handler: ', handler);
-      const { update, start, end } = buildUpdate(value, selectionStart, selectionEnd, handler.emit);
-      // const update = insertAt(value, { start: selectionStart, end: selectionEnd }, emitValue);
-      return {
-        value: update,
-        selectionStart: start,
-        // (selectionStart + value.length),
-        selectionEnd: end,
-        //(selectionEnd + value.length),
-        superscript
+
+      if (typeof handler.emit === 'function') {
+        return handler.emit(value, selectionStart, selectionEnd);
+      } else {
+        const { update, start, end } = buildUpdate(value, selectionStart, selectionEnd, handler.emit);
+        // const update = insertAt(value, { start: selectionStart, end: selectionEnd }, emitValue);
+        return {
+          value: update,
+          selectionStart: start,
+          // (selectionStart + value.length),
+          selectionEnd: end,
+          //(selectionEnd + value.length),
+          superscript
+        }
+
       }
 
     }

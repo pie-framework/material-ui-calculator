@@ -95,6 +95,16 @@ export class StatefulCalculator extends React.Component {
       return;
     }
 
+    if (value === 'plus-minus') {
+      const update = expr.indexOf('-') === 0 ? expr.substring(1) : `-${expr}`;
+      const added = update.length > expr.length;
+      const selectionStart = this.state.selectionStart + (added ? 1 : -1);
+      const selectionEnd = this.state.selectionEnd + (added ? 1 : -1);
+      this.setState({ expr: update, selectionStart, selectionEnd });
+      this.input.focus();
+      return;
+    }
+
     const result = handleInput(value, expr, superscript, selectionStart, selectionEnd);
 
     if (result) {
