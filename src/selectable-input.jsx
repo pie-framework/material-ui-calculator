@@ -2,26 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import debug from 'debug';
+import { insertAt } from './utils';
+import { handleInput } from './math-input';
 
 const log = debug('@pie-labs:material-ui-calculator');
 
-const map = {
-  0: '⁰',
-  1: '¹',
-  2: '²',
-  3: '³',
-  4: '⁴',
-  5: '⁵',
-  6: '⁶',
-  7: '⁷',
-  8: '⁸',
-  9: '⁹',
-}
-
-const getSuperscript = (char) => map[char];
-
-export default class extends React.Component {
-
+export default class SelectableInput extends React.Component {
 
   focus() {
     this.input.focus();
@@ -52,17 +38,20 @@ export default class extends React.Component {
     }
   }
 
+
   onChange = event => {
     log('[onChange]');
     const { onChange } = this.props;
-    //how to intercept the input and superscript if needed?
+
+    //TODO: shouldn't need to unset superscript here.
     onChange({
       target: {
-        value: '?',
+        value: event.target.value,
         selectionStart: event.target.selectionStart,
-        selectionEnd: event.target.selectionEnd
+        selectionEnd: event.target.selectionEnd,
+        superscript: undefined
       }
-    })
+    });
   }
 
   getUpdate = () => this.input && ({
@@ -87,48 +76,40 @@ export default class extends React.Component {
   }
 
   onKeyDown = e => {
-    log('[onKeyDown] e.key', e.key);
-    const { superscript, value, onChange } = this.props;
-    if (superscript) {
-
-      if (superscript.test(e.key)) {
-        e.preventDefault();
-        e.stopPropagation();
-        const sv = getSuperscript(e.key);
-        if (sv) {
-          const update = `${value}${sv}`;
-          onChange({
-            target: {
-              value: update,
-              selectionStart: update.length,
-              selectionEnd: update.length
-            }
-          });
-        }
-      }
+    const { onKeyDown } = this.props;
+    if (onKeyDown) {
+      onKeyDown(e);
     }
-
   }
 
   render() {
 
-    const { value } = this.props;
+    const { value, className, onKeyDown, theme, onFocus, onBlur } = this.props;
+
+    const inputTheme = theme ? theme : {}
     return (
       <TextField
+        className={className}
         inputRef={this.inputRef}
         onKeyUp={this.onKeyUp}
         onKeyDown={this.onKeyDown}
+        onFocus={onFocus}
+        onBlur={onBlur}
         value={value}
         onChange={this.onChange}
         onClick={this.onClick}
         InputProps={{
           disableUnderline: true,
-          classes: {
-            root: 'root',
-            input: 'input'
-          }
+          classes: inputTheme
         }} />
     );
-
   }
+}
+
+SelectableInput.propTypes = {
+  onKeyDown: PropTypes.func,
+  inputRef: PropTypes.func,
+  onSelectionChange: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired
 }

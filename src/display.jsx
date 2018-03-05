@@ -6,92 +6,25 @@ import classNames from 'classnames';
 import AngleMode from './angle-mode';
 import SelectableInput from './selectable-input';
 
-const Field = withStyles(theme => ({
-  root: {
-    fontSize: '40px'
-  },
-  input: {
-    textAlign: 'right',
-    padding: 0,
-    margin: 0
-  }
-}))(({ value,
-  classes,
-  onFocus,
-  onBlur,
-  onChange,
-  onSelectionChange,
-  onEnter,
-  inputRef }) => {
-
-  const onKeyDown = event => {
-    if (event.key === 'Enter') {
-      onEnter();
-    }
-  }
-
-  return (
-
-    <SelectableInput
-      inputRef={inputRef}
-      value={value}
-      onFocus={onFocus}
-      onBlur={onBlur}
-      onChange={onChange}
-      onSelectionChange={onSelectionChange}
-      onKeyDown={onKeyDown}
-      InputProps={{
-        disableUnderline: true,
-        classes: {
-          root: classes.root,
-          input: classes.input
-        }
-      }} />
-  )
-});
-
 export class Display extends React.Component {
-
-  constructor(props) {
-    super(props);
-    this.state = {
-      focused: false
-    }
-  }
-
-  onFocus = () => {
-    this.setState({ focused: true });
-  }
-
-  onBlur = () => {
-    this.setState({ focused: false });
-  }
 
   render() {
     const {
       classes,
-      value,
       angleMode,
       onAngleModeChange,
-      onChange,
-      onSelectionChange,
-      onEnter,
-      inputRef } = this.props;
+      children,
+      focused
+    } = this.props;
 
-    const { focused } = this.state;
     const names = classNames(classes.display, focused && classes.focused);
     return (
       <div className={names}>
-        <AngleMode angleMode={angleMode} onChange={onAngleModeChange} />
-        <div className={classes.expr}>
-          <Field value={value}
-            onFocus={this.onFocus}
-            onBlur={this.onBlur}
-            onChange={onChange}
-            onSelectionChange={onSelectionChange}
-            onEnter={onEnter}
-            inputRef={inputRef} />
-        </div>
+        <AngleMode
+          className={classes.angleMode}
+          angleMode={angleMode}
+          onChange={onAngleModeChange} />
+        <div className={classes.expr}>{children} </div>
       </div>
     );
   }
@@ -100,6 +33,9 @@ export class Display extends React.Component {
 Display.propTypes = {}
 
 const styles = theme => ({
+  angleMode: {
+    alignSelf: 'center'
+  },
   display: {
     display: 'flex',
     backgroundColor: theme.palette.primary[50],
@@ -112,10 +48,11 @@ const styles = theme => ({
   },
   focused: {
     backgroundColor: theme.palette.primary[50],
-    borderBottom: 'solid 1px rgba(0,0,0,0.2)'
+    borderBottom: 'solid 1px rgba(0,0,0,1.0)'
   },
   expr: {
-    flex: 1
+    flex: 1,
+    paddingLeft: theme.spacing.unit
   }
 });
 

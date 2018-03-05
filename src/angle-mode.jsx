@@ -23,8 +23,8 @@ const Angle = withStyles(theme => ({
 ));
 
 
-const AngleMode = ({ angleMode, onChange }) => (
-  <div>
+const AngleMode = ({ className, angleMode, onChange }) => (
+  <div className={className}>
     <Angle type="deg" onChange={onChange} angleMode={angleMode} />
     <Angle type="rad" onChange={onChange} angleMode={angleMode} />
   </div>

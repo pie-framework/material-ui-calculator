@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Calculator, { SelectableInput } from '../src';
+import Calculator from '../src';
 import Button from 'material-ui/Button';
 import debug from 'debug';
 
@@ -54,7 +54,7 @@ class Demo extends React.Component {
         <div>
           <p>Selectable Input: </p>
           <Button onClick={() => this.si.focus()}>focus</Button>
-          <SelectableInput
+          {/* <SelectableInput
             superscript={/[0-9]/}
             ref={r => this.si = r}
             value={selectable.value}
@@ -62,11 +62,11 @@ class Demo extends React.Component {
             onSelectionChange={this.onSelectionChange}
             selectionStart={selectable.selectionStart}
             selectionEnd={selectable.selectionEnd}
-          />
+          /> */}
 
         </div>
         <div>
-          {/* <Calculator mode="scientific" /> */}
+          <Calculator mode="scientific" />
         </div>
       </div>)
   }
