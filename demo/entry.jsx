@@ -4,7 +4,7 @@ import Calculator from '../src';
 import Button from 'material-ui/Button';
 import debug from 'debug';
 
-const log = debug('@pie-labs:demo');
+const log = debug('@pie-framework:demo');
 
 class Demo extends React.Component {
 
@@ -12,11 +12,7 @@ class Demo extends React.Component {
     super(props);
 
     this.state = {
-      selectable: {
-        value: 'foo',
-        selectionStart: 1,
-        selectionEnd: 1
-      }
+      history: []
     }
   }
 
@@ -44,30 +40,25 @@ class Demo extends React.Component {
     this.setState({ selectable });
   }
 
+  onEvaluationComplete = (expression, result) => {
+    this.state.history.push({ expression, result });
+    this.setState({ history: this.state.history });
+  }
+
   render() {
 
     const { selectable } = this.state;
 
     return (
       <div>
-        {JSON.stringify(this.state, null, '  ')}
         <div>
-          <p>Selectable Input: </p>
-          <Button onClick={() => this.si.focus()}>focus</Button>
-          {/* <SelectableInput
-            superscript={/[0-9]/}
-            ref={r => this.si = r}
-            value={selectable.value}
-            onChange={this.onChange}
-            onSelectionChange={this.onSelectionChange}
-            selectionStart={selectable.selectionStart}
-            selectionEnd={selectable.selectionEnd}
-          /> */}
-
+          <Calculator
+            mode="scientific"
+            onEvaluationComplete={this.onEvaluationComplete} />
         </div>
-        <div>
-          <Calculator mode="scientific" />
-        </div>
+        <pre>
+          {JSON.stringify(this.state, null, '  ')}
+        </pre>
       </div>)
   }
 }

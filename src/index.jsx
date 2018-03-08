@@ -24,23 +24,35 @@ export default class Main extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      expr: ''
+      expr: '',
+      angleMode: 'rad'
     }
   }
 
   onEvaluate = (expression) => {
     const result = evaluate(expression, 'rad');
+
+    if (this.props.onEvaluationComplete) {
+      this.props.onEvaluationComplete(expression, result);
+    }
+
     this.setState({
       expr: result
     });
   }
 
+  onAngleModeChange = angleMode => {
+    this.setState({ angleMode });
+  }
+
   render() {
-    const { expr } = this.state;
+    const { expr, angleMode } = this.state;
 
     return (
       <Calculator
         mode={'scientific'}
+        angleMode={angleMode}
+        onAngleModeChange={this.onAngleModeChange}
         expr={expr}
         onEvaluate={this.onEvaluate} />
     );

@@ -5,7 +5,7 @@ import debug from 'debug';
 import { insertAt } from './utils';
 import { handleInput } from './math-input';
 
-const log = debug('@pie-labs:material-ui-calculator');
+const log = debug('@pie-framework:material-ui-calculator');
 
 export default class SelectableInput extends React.Component {
 

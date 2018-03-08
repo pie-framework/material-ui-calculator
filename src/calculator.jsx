@@ -12,7 +12,7 @@ import Display from './display';
 
 export { SelectableInput }
 
-const log = debug('@pie-labs:material-ui-calculator');
+const log = debug('@pie-framework:material-ui-calculator');
 
 /** 1. an input with 
  * selectionStart
@@ -30,7 +30,6 @@ export class StatefulCalculator extends React.Component {
     super(props);
     this.state = {
       expr: props.expr,
-      angleMode: 'rad',
       selectionStart: 0,
       selectionEnd: 0
     }
@@ -47,12 +46,6 @@ export class StatefulCalculator extends React.Component {
         selectionEnd: expr.length
       });
     }
-  }
-
-
-  onAngleModeChange = m => {
-    const calculator = { ...this.state.calculator, angleMode: m }
-    this.setState({ calculator });
   }
 
   onEnter = () => {
@@ -179,9 +172,8 @@ export class StatefulCalculator extends React.Component {
   }
 
   render() {
-    const { classes, mode } = this.props;
+    const { classes, mode, angleMode, onAngleModeChange } = this.props;
     const {
-      angleMode,
       expr,
       selectionStart,
       selectionEnd,
@@ -192,7 +184,7 @@ export class StatefulCalculator extends React.Component {
       <div>
         <Display
           angleMode={angleMode}
-          onAngleModeChange={this.onAngleModeChange}
+          onAngleModeChange={onAngleModeChange}
           focused={focused}>
           <SelectableInput
             className={classes.selectableInput}
@@ -225,7 +217,12 @@ export class StatefulCalculator extends React.Component {
   }
 }
 
-StatefulCalculator.propTypes = {}
+StatefulCalculator.propTypes = {
+  angleMode: PropTypes.oneOf(['deg', 'rad']).isRequired,
+  onAngleModeChange: PropTypes.func.isRequired,
+  expr: PropTypes.string.isRequired,
+  onEvaluate: PropTypes.func.isRequired
+}
 
 export default withStyles(theme => ({
   selectableInput: {

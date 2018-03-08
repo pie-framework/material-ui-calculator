@@ -1,8 +1,9 @@
 import debug from 'debug';
 
 import { insertAt } from './utils';
+import { select } from './selector';
 
-const log = debug('@pie-labs:material-ui-calculator:math-input');
+const log = debug('@pie-framework:material-ui-calculator:math-input');
 const map = {
   0: '⁰',
   1: '¹',
@@ -43,6 +44,10 @@ const INPUTS = [
     //     }
     //   }
     // }
+  },
+  {
+    match: '1/x',
+    emit: '1/[x]'
   },
   {
     match: /[0-9]/,
@@ -108,18 +113,16 @@ const INPUTS = [
 
 const getSuperscript = char => map[char];
 
-const cleanEmit = (e) => e.replace('|', '');
-
 const buildUpdate = (value, start, end, emit) => {
 
-  const emitValue = cleanEmit(emit);
-  log('[buildUpdate] emitValue: ', emitValue);
-  const relativeCaret = emit.indexOf('|') > 0 ? emit.indexOf('|') : emitValue.length;
-  const valueUpdate = insertAt(value, { start, end }, emitValue);
+  const result = select(emit);
+
+  const valueUpdate = insertAt(value, { start, end }, result.value);
+  log('[buildUpdate] emitValue: ', valueUpdate);
   return {
     update: valueUpdate,
-    start: start + relativeCaret,
-    end: start + relativeCaret
+    start: start + result.start,
+    end: start + result.end
   }
 }
 
@@ -138,7 +141,7 @@ const isMatch = (match, input) => {
   return m.some(matches);
 }
 
-export const handleInput = (input, value, superscript, selectionStart, selectionEnd) => {
+export const handleInput = (input, value, selectionStart, selectionEnd, superscript) => {
 
   if (superscript) {
     if (superscript.test(e.key)) {
