@@ -1,8 +1,8 @@
 import debug from 'debug';
-
 import { insertAt } from './utils';
 import { select } from './selector';
-
+import isRegExp from 'lodash/isRegExp';
+import invariant from 'invariant';
 const log = debug('@pie-framework:material-ui-calculator:math-input');
 const map = {
   0: '⁰',
@@ -23,27 +23,12 @@ const INPUTS = [
     passthrough: true
   },
   {
-    match: /e/,
+    match: /^e$/,
     passthrough: true
   },
   {
     match: /\./,
     passthrough: true
-    // emit: (expr, selectionStart, selectionEnd) => {
-    //   if (expr.indexOf('.') === -1) {
-    //     return {
-    //       value: insertAt(expr, { start: selectionStart, end: selectionEnd }, '.'),
-    //       selectionStart: selectionStart + 1,
-    //       selectionEnd: selectionEnd + 1
-    //     }
-    //   } else {
-    //     return {
-    //       value: expr,
-    //       selectionStart,
-    //       selectionEnd
-    //     }
-    //   }
-    // }
   },
   {
     match: '1/x',
@@ -62,7 +47,6 @@ const INPUTS = [
     emit: '×'
   },
   {
-    //there is no input string?
     match: ['sqrt', '√'],
     emit: '√(|)'
   },
@@ -70,6 +54,14 @@ const INPUTS = [
     match: '^',
     emit: '[ʸ]',
     superscript: /[0-9]/
+  },
+  {
+    match: 'square',
+    emit: map[2]
+  },
+  {
+    match: 'cube',
+    emit: map[3]
   },
   {
     match: 'sin',
@@ -143,6 +135,8 @@ const isMatch = (match, input) => {
 
 export const handleInput = (input, value, selectionStart, selectionEnd, superscript) => {
 
+  invariant(superscript ? isRegExp(superscript) : true, `superscript must be RegExp if defined but got: ${superscript}`);
+
   if (superscript && superscript.test(input)) {
     const sv = getSuperscript(input);
     log('[handleInput] sv: ', sv);
@@ -174,14 +168,11 @@ export const handleInput = (input, value, selectionStart, selectionEnd, superscr
         return handler.emit(value, selectionStart, selectionEnd);
       } else {
         const { update, start, end } = buildUpdate(value, selectionStart, selectionEnd, handler.emit);
-        // const update = insertAt(value, { start: selectionStart, end: selectionEnd }, emitValue);
         return {
           value: update,
           selectionStart: start,
-          // (selectionStart + value.length),
           selectionEnd: end,
-          //(selectionEnd + value.length),
-          superscript
+          superscript: handler.superscript
         }
       }
     }

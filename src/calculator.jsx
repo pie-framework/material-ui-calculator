@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-// import reduce, { Inputs } from '@pie-labs/calculator-reducer';
 import debug from 'debug';
 import SelectableInput from './selectable-input';
 import Scientific from './scientific';
@@ -48,12 +47,12 @@ export class StatefulCalculator extends React.Component {
     }
   }
 
-  onEnter = () => {
-    log('[onEnter]');
-    const calculator = reduce(this.state.calculator, Inputs.EQUALS);
-    log('[onEnter] calculator: ', calculator);
-    this.setState({ calculator });
-  }
+  // onEnter = () => {
+  //   log('[onEnter]');
+  //   const calculator = reduce(this.state.calculator, Inputs.EQUALS);
+  //   log('[onEnter] calculator: ', calculator);
+  //   this.setState({ calculator });
+  // }
 
   onChange = e => {
     this.setState({
@@ -98,7 +97,7 @@ export class StatefulCalculator extends React.Component {
       return;
     }
 
-    const result = handleInput(value, expr, superscript, selectionStart, selectionEnd);
+    const result = handleInput(value, expr, selectionStart, selectionEnd, superscript);
 
     if (result) {
       if (result.passthrough) {
@@ -133,7 +132,7 @@ export class StatefulCalculator extends React.Component {
   onKeyDown = e => {
 
     if (e.key === 'ArrowRight' || e.key === 'ArrowLeft' ||
-      (e.key === 'a' && e.metaKey) || e.key === 'Tab') {
+      (e.key === 'a' && e.metaKey) || e.key === 'Tab' || e.key === 'Backspace') {
       return;
     }
 
@@ -149,7 +148,7 @@ export class StatefulCalculator extends React.Component {
 
     log('[onKeyDown] e.key', e.key);
     const { selectionStart, selectionEnd, superscript, expr } = this.state;
-    const result = handleInput(e.key, expr, superscript, selectionStart, selectionEnd);
+    const result = handleInput(e.key, expr, selectionStart, selectionEnd, superscript);
     log('[onKeyDown] result: ', result);
 
     if (result && result.passthrough) {
