@@ -110,13 +110,13 @@ const INPUTS = [
   }
 ];
 
-
 const getSuperscript = char => map[char];
 
 const buildUpdate = (value, start, end, emit) => {
 
   const result = select(emit);
 
+  log('[buildUpdate] result: ', result);
   const valueUpdate = insertAt(value, { start, end }, result.value);
   log('[buildUpdate] emitValue: ', valueUpdate);
   return {
@@ -143,33 +143,32 @@ const isMatch = (match, input) => {
 
 export const handleInput = (input, value, selectionStart, selectionEnd, superscript) => {
 
-  if (superscript) {
-    if (superscript.test(e.key)) {
-      const sv = getSuperscript(e.key);
-      if (sv) {
-        const update = insertAt(value, { start: selectionStart, end: selectionEnd }, sv);
-
-        return {
-          value: update,
-          selectionStart: update.length,
-          selectionEnd: update.length,
-          superscript
-        };
+  if (superscript && superscript.test(input)) {
+    const sv = getSuperscript(input);
+    log('[handleInput] sv: ', sv);
+    if (sv) {
+      const { update, start, end } = buildUpdate(value, selectionStart, selectionEnd, sv);
+      log('[handleInput] superscript: update: ', update, start, end);
+      return {
+        value: update,
+        selectionStart: update.length,
+        selectionEnd: update.length,
+        superscript
       }
     }
   }
 
   const handler = INPUTS.find(v => isMatch(v.match, input));
 
-  log('handler: ', handler);
   if (handler) {
+
+    log('[handleInput] handler: ', handler);
 
     if (handler.passthrough) {
       return {
         passthrough: true
       }
     } else {
-      log('handler: ', handler);
 
       if (typeof handler.emit === 'function') {
         return handler.emit(value, selectionStart, selectionEnd);
@@ -184,10 +183,7 @@ export const handleInput = (input, value, selectionStart, selectionEnd, superscr
           //(selectionEnd + value.length),
           superscript
         }
-
       }
-
     }
   }
-
 }

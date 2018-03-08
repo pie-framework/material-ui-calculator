@@ -15,6 +15,10 @@ export const select = (value) => {
   const leftBracketIndex = value.indexOf('[');
   const rightBracketIndex = value.indexOf(']');
 
+  if (leftBracketIndex === -1 && rightBracketIndex === -1) {
+    return { value, start: value.length, end: value.length }
+  }
+
   if (
     (leftBracketIndex === -1 && rightBracketIndex !== -1) ||
     (leftBracketIndex !== -1 && rightBracketIndex === -1)

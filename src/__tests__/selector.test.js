@@ -11,6 +11,7 @@ describe('selector', () => {
     });
   }
 
+  assert('hi', 'hi', 2);
   assert('|', '', 0);
   assert('hi th|ere', 'hi there', 5);
   assert('hi|', 'hi', 2);
