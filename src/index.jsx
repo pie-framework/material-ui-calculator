@@ -1,23 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Calculator from './calculator';
-import mathjs from 'mathjs';
 import debug from 'debug';
+import { calculate, AngleMode } from '@pie-framework/expression-parser';
 
-const log = debug('@pie-labs:material-ui-calculator');
 
-const convert = (raw) => {
-  log('[convert] raw: ', raw);
-  return raw
-    .replace(/π/g, 'pi')
-    .replace(/√/g, 'sqrt')
-    .replace(/÷/g, '/')
-    .replace(/×/g, '*');
-}
+const log = debug('@pie-framework:material-ui-calculator');
 
-const evaluate = (expr) => {
+const evaluate = (expr, angleMode) => {
   try {
-    return mathjs.eval(expr);
+    const angleMode = angleMode === 'deg' ? AngleMode.DEGREES : AngleMode.RADIANS;
+    const result = calculate(expr, { angleMode });
+    log('result: ', result);
+    return result.value.toString();
   } catch (e) {
     log('error: ', e.message);
     return undefined;
@@ -34,10 +29,7 @@ export default class Main extends React.Component {
   }
 
   onEvaluate = (expression) => {
-    log('[onEvaluate] expression:', expression);
-    const converted = convert(expression);
-    log('[onEvaluate] converted:', converted);
-    const result = evaluate(converted).toString();
+    const result = evaluate(expression, 'rad');
     this.setState({
       expr: result
     });

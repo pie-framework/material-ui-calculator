@@ -3,11 +3,12 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Pad from './pad';
 import classNames from 'classnames';
-import { AngleInput, UnaryInput, Inputs, LogInput } from '@pie-labs/calculator-reducer';
+import { AngleInput, UnaryInput, Inputs, LogInput } from './symbols';
 
 const items = [
   '(',
   ')',
+
   Inputs.PI,
   LogInput.LOG,
   AngleInput.SIN,
@@ -17,7 +18,7 @@ const items = [
   AngleInput.ASIN,
   AngleInput.ACOS,
   AngleInput.ATAN,
-  { label: 'n!', value: Inputs.FACTORIAL },
+  { label: 'n!', value: '!' },
   { label: '√', value: UnaryInput.SQUARE_ROOT },
   { label: 'x²', value: UnaryInput.SQUARE },
   { label: 'x³', value: UnaryInput.CUBE },

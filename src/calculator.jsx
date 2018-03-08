@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import reduce, { Inputs } from '@pie-labs/calculator-reducer';
+// import reduce, { Inputs } from '@pie-labs/calculator-reducer';
 import debug from 'debug';
 import SelectableInput from './selectable-input';
 import Scientific from './scientific';
