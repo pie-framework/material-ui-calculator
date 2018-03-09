@@ -1,8 +1,9 @@
 import debug from 'debug';
-
 import { insertAt } from './utils';
-
-const log = debug('@pie-labs:material-ui-calculator:math-input');
+import { select } from './selector';
+import isRegExp from 'lodash/isRegExp';
+import invariant from 'invariant';
+const log = debug('@pie-framework:material-ui-calculator:math-input');
 const map = {
   0: '⁰',
   1: '¹',
@@ -16,33 +17,27 @@ const map = {
   9: '⁹',
 };
 
+const fn = n => ({
+  match: n,
+  emit: `${n}(|)`
+});
+
 const INPUTS = [
   {
     match: /[\+\-\(\)]/,
     passthrough: true
   },
   {
-    match: /e/,
+    match: /^e$/,
     passthrough: true
   },
   {
     match: /\./,
     passthrough: true
-    // emit: (expr, selectionStart, selectionEnd) => {
-    //   if (expr.indexOf('.') === -1) {
-    //     return {
-    //       value: insertAt(expr, { start: selectionStart, end: selectionEnd }, '.'),
-    //       selectionStart: selectionStart + 1,
-    //       selectionEnd: selectionEnd + 1
-    //     }
-    //   } else {
-    //     return {
-    //       value: expr,
-    //       selectionStart,
-    //       selectionEnd
-    //     }
-    //   }
-    // }
+  },
+  {
+    match: '1/x',
+    emit: '1/[x]'
   },
   {
     match: /[0-9]/,
@@ -57,7 +52,6 @@ const INPUTS = [
     emit: '×'
   },
   {
-    //there is no input string?
     match: ['sqrt', '√'],
     emit: '√(|)'
   },
@@ -67,28 +61,25 @@ const INPUTS = [
     superscript: /[0-9]/
   },
   {
-    match: 'sin',
-    emit: 'sin(|)'
+    match: 'square',
+    emit: map[2]
   },
   {
-    match: 'cos',
-    emit: 'cos(|)'
+    match: 'cube',
+    emit: map[3]
   },
+  fn('sin'),
+  fn('cos'),
+  fn('tan'),
+  fn('asin'),
+  fn('acos'),
+  fn('atan'),
+  fn('log'),
+  fn('ln'),
+  fn('abs'),
   {
-    match: 'tan',
-    emit: 'tan(|)'
-  },
-  {
-    match: 'log',
-    emit: 'log(|)'
-  },
-  {
-    match: 'ln',
-    emit: 'ln(|)'
-  },
-  {
-    match: 'abs',
-    emit: 'abs(|)'
+    match: '%',
+    emit: '%'
   },
   {
     match: '!',
@@ -105,21 +96,19 @@ const INPUTS = [
   }
 ];
 
-
 const getSuperscript = char => map[char];
-
-const cleanEmit = (e) => e.replace('|', '');
 
 const buildUpdate = (value, start, end, emit) => {
 
-  const emitValue = cleanEmit(emit);
-  log('[buildUpdate] emitValue: ', emitValue);
-  const relativeCaret = emit.indexOf('|') > 0 ? emit.indexOf('|') : emitValue.length;
-  const valueUpdate = insertAt(value, { start, end }, emitValue);
+  const result = select(emit);
+
+  log('[buildUpdate] result: ', result);
+  const valueUpdate = insertAt(value, { start, end }, result.value);
+  log('[buildUpdate] emitValue: ', valueUpdate);
   return {
     update: valueUpdate,
-    start: start + relativeCaret,
-    end: start + relativeCaret
+    start: start + result.start,
+    end: start + result.end
   }
 }
 
@@ -138,53 +127,48 @@ const isMatch = (match, input) => {
   return m.some(matches);
 }
 
-export const handleInput = (input, value, superscript, selectionStart, selectionEnd) => {
+export const handleInput = (input, value, selectionStart, selectionEnd, superscript) => {
 
-  if (superscript) {
-    if (superscript.test(e.key)) {
-      const sv = getSuperscript(e.key);
-      if (sv) {
-        const update = insertAt(value, { start: selectionStart, end: selectionEnd }, sv);
+  invariant(superscript ? isRegExp(superscript) : true, `superscript must be RegExp if defined but got: ${superscript}`);
 
-        return {
-          value: update,
-          selectionStart: update.length,
-          selectionEnd: update.length,
-          superscript
-        };
+  if (superscript && superscript.test(input)) {
+    const sv = getSuperscript(input);
+    log('[handleInput] sv: ', sv);
+    if (sv) {
+      const { update, start, end } = buildUpdate(value, selectionStart, selectionEnd, sv);
+      log('[handleInput] superscript: update: ', update, start, end);
+      return {
+        value: update,
+        selectionStart: update.length,
+        selectionEnd: update.length,
+        superscript
       }
     }
   }
 
   const handler = INPUTS.find(v => isMatch(v.match, input));
 
-  log('handler: ', handler);
   if (handler) {
+
+    log('[handleInput] handler: ', handler);
 
     if (handler.passthrough) {
       return {
         passthrough: true
       }
     } else {
-      log('handler: ', handler);
 
       if (typeof handler.emit === 'function') {
         return handler.emit(value, selectionStart, selectionEnd);
       } else {
         const { update, start, end } = buildUpdate(value, selectionStart, selectionEnd, handler.emit);
-        // const update = insertAt(value, { start: selectionStart, end: selectionEnd }, emitValue);
         return {
           value: update,
           selectionStart: start,
-          // (selectionStart + value.length),
           selectionEnd: end,
-          //(selectionEnd + value.length),
-          superscript
+          superscript: handler.superscript
         }
-
       }
-
     }
   }
-
 }

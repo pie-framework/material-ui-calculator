@@ -37,7 +37,7 @@ export class Basic extends React.Component {
     const names = classNames(classes.pad, className);
 
     return (
-      <div className={classes.pad}>
+      <div className={names}>
         {items.map((i, index) => {
 
           const props = typeof i === 'string' ? { label: i, value: i } : i;

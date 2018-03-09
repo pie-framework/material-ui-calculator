@@ -14,16 +14,18 @@ export class Display extends React.Component {
       angleMode,
       onAngleModeChange,
       children,
-      focused
+      focused,
+      error,
+      showAngleMode
     } = this.props;
 
-    const names = classNames(classes.display, focused && classes.focused);
+    const names = classNames(classes.display, focused && classes.focused, error && classes.error);
     return (
       <div className={names}>
-        <AngleMode
+        {showAngleMode && <AngleMode
           className={classes.angleMode}
           angleMode={angleMode}
-          onChange={onAngleModeChange} />
+          onChange={onAngleModeChange} />}
         <div className={classes.expr}>{children} </div>
       </div>
     );
@@ -49,6 +51,8 @@ const styles = theme => ({
   focused: {
     backgroundColor: theme.palette.primary[50],
     borderBottom: 'solid 1px rgba(0,0,0,1.0)'
+  },
+  error: {
   },
   expr: {
     flex: 1,
