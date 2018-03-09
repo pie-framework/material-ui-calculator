@@ -2,6 +2,8 @@ import debug from 'debug';
 import { insertAt } from './utils';
 import { select } from './selector';
 import isRegExp from 'lodash/isRegExp';
+import isFunction from 'lodash/isFunction';
+
 import invariant from 'invariant';
 const log = debug('@pie-framework:material-ui-calculator:math-input');
 const map = {
@@ -24,7 +26,7 @@ const fn = n => ({
 
 const INPUTS = [
   {
-    match: /[\+\-\(\)]/,
+    match: /^[\+\-\(\)]$/,
     passthrough: true
   },
   {
@@ -93,6 +95,30 @@ const INPUTS = [
   {
     match: '/',
     emit: '÷'
+  },
+  {
+    match: 'clear',
+    emit: () => ({
+      expr: '',
+      position: {
+        start: 0,
+        end: 0
+      }
+    })
+  },
+  {
+    match: 'plus-minus',
+    emit: (expr, position) => {
+      const update = expr.indexOf('-') === 0 ? expr.substring(1) : `-${expr}`;
+      const added = update.length > expr.length;
+      return {
+        expr: update,
+        position: {
+          start: position.start + (added ? 1 : -1),
+          end: position.end + (added ? 1 : -1)
+        }
+      }
+    }
   }
 ];
 
@@ -158,8 +184,14 @@ export const handleInput = (input, value, selectionStart, selectionEnd, superscr
       }
     } else {
 
-      if (typeof handler.emit === 'function') {
-        return handler.emit(value, selectionStart, selectionEnd);
+      if (isFunction(handler.emit)) {
+        const o = handler.emit(value, { start: selectionStart, end: selectionEnd });
+        return {
+          value: o.expr,
+          selectionStart: o.position.start,
+          selectionEnd: o.position.end,
+          superscript: o.superscript || superscript
+        }
       } else {
         const { update, start, end } = buildUpdate(value, selectionStart, selectionEnd, handler.emit);
         return {

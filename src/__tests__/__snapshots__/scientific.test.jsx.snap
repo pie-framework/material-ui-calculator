@@ -1,0 +1,312 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="Scientific-scientific-1"
+>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "(",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": ")",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "π",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "log",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "sin",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "cos",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "tan",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "ln",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "asin",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "acos",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "atan",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "n!",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "√",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "x²",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "x³",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "x<sup>y</sup>",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "1/x",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "e",
+          }
+        }
+      />
+    </div>
+  </div>
+  <div
+    className="Component-pad-5 Scientific-pad-2"
+    style={undefined}
+  >
+    <div
+      dataName="IconButton"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "abs",
+          }
+        }
+      />
+    </div>
+  </div>
+</div>
+`;

@@ -22,10 +22,12 @@ export default class SelectableInput extends React.Component {
   }
 
   applySelection = () => {
-    const { selectionEnd, selectionStart } = this.props;
-    this.input.selectionStart = selectionStart;
-    this.input.selectionEnd = selectionEnd;
-    log('input: ', this.input.selectionStart, this.input.selectionEnd)
+    if (this.input) {
+      const { selectionEnd, selectionStart } = this.props;
+      this.input.selectionStart = selectionStart;
+      this.input.selectionEnd = selectionEnd;
+      log('input: ', this.input.selectionStart, this.input.selectionEnd)
+    }
   }
 
   onKeyUp = () => {
@@ -38,18 +40,15 @@ export default class SelectableInput extends React.Component {
     }
   }
 
-
   onChange = event => {
     log('[onChange]');
     const { onChange } = this.props;
 
-    //TODO: shouldn't need to unset superscript here.
     onChange({
       target: {
         value: event.target.value,
         selectionStart: event.target.selectionStart,
-        selectionEnd: event.target.selectionEnd,
-        superscript: undefined
+        selectionEnd: event.target.selectionEnd
       }
     });
   }

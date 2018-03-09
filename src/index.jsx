@@ -7,9 +7,11 @@ import { calculate, AngleMode } from '@pie-framework/expression-parser';
 
 const log = debug('@pie-framework:material-ui-calculator');
 
-const evaluate = (expr, angleMode) => {
+const evaluate = (expr, am) => {
   try {
-    const angleMode = angleMode === 'deg' ? AngleMode.DEGREES : AngleMode.RADIANS;
+    log('evaluate: ', expr, am);
+    const angleMode = am === 'deg' ? AngleMode.DEGREES : AngleMode.RADIANS;
+    log('evaluate: angleMode: ', angleMode);
     return calculate(expr, { angleMode });
   } catch (e) {
     log('error: ', e.message);
@@ -28,7 +30,8 @@ export default class Main extends React.Component {
   }
 
   onEvaluate = (expression) => {
-    const result = evaluate(expression, 'rad');
+    log('onEvaluate: state: ', this.state);
+    const result = evaluate(expression, this.state.angleMode);
 
     if (this.props.onEvaluationComplete && !result.error) {
       this.props.onEvaluationComplete(expression, result.value);

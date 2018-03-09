@@ -71,22 +71,6 @@ export class Calculator extends React.Component {
       return;
     }
 
-    if (value === 'clear') {
-      this.setState({ expr: '', selectionStart: 0, selectionEnd: 0 });
-      this.input.focus();
-      return;
-    }
-
-    if (value === 'plus-minus') {
-      const update = expr.indexOf('-') === 0 ? expr.substring(1) : `-${expr}`;
-      const added = update.length > expr.length;
-      const selectionStart = this.state.selectionStart + (added ? 1 : -1);
-      const selectionEnd = this.state.selectionEnd + (added ? 1 : -1);
-      this.setState({ expr: update, selectionStart, selectionEnd });
-      this.input.focus();
-      return;
-    }
-
     const result = handleInput(value, expr, selectionStart, selectionEnd, superscript);
 
     if (result) {
@@ -140,7 +124,9 @@ export class Calculator extends React.Component {
     log('[onKeyDown] result: ', result);
 
     if (result && result.passthrough) {
-      //just let the input handle the keydown
+      /** 
+       * just let the input handle the keydown - this will go through onChange
+       */
       return;
     }
 

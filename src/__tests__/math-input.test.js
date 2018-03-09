@@ -12,6 +12,7 @@ describe('handleInput', () => {
       const v = select(current);
       const e = select(expected);
       const result = handleInput(input, v.value, v.start, v.end, superscript);
+      log('result: ', result);
       expect(result.value).toEqual(e.value);
       expect(result.selectionStart).toEqual(e.start);
       expect(result.selectionEnd).toEqual(e.end);
@@ -41,5 +42,16 @@ describe('handleInput', () => {
     assert('1', '1[ʸ]', '1¹|', /1/);
     assert('2', '1¹|', '1¹²|', /[0-9]/);
   });
+
+  describe('clear', () => {
+    assert('clear', '[f00]000', '|');
+  });
+
+  describe('plus-minus', () => {
+    assert('plus-minus', '1', '-1');
+    assert('plus-minus', '-1', '1');
+    assert('plus-minus', '1[00]', '-1[00]');
+    assert('plus-minus', '-1[00]', '1[00]');
+  })
 
 });
