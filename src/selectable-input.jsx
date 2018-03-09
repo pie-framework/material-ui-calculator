@@ -22,10 +22,12 @@ export default class SelectableInput extends React.Component {
   }
 
   applySelection = () => {
-    const { selectionEnd, selectionStart } = this.props;
-    this.input.selectionStart = selectionStart;
-    this.input.selectionEnd = selectionEnd;
-    log('input: ', this.input.selectionStart, this.input.selectionEnd)
+    if (this.input) {
+      const { selectionEnd, selectionStart } = this.props;
+      this.input.selectionStart = selectionStart;
+      this.input.selectionEnd = selectionEnd;
+      log('input: ', this.input.selectionStart, this.input.selectionEnd)
+    }
   }
 
   onKeyUp = () => {
