@@ -38,18 +38,15 @@ export default class SelectableInput extends React.Component {
     }
   }
 
-
   onChange = event => {
     log('[onChange]');
     const { onChange } = this.props;
 
-    //TODO: shouldn't need to unset superscript here.
     onChange({
       target: {
         value: event.target.value,
         selectionStart: event.target.selectionStart,
-        selectionEnd: event.target.selectionEnd,
-        superscript: undefined
+        selectionEnd: event.target.selectionEnd
       }
     });
   }
