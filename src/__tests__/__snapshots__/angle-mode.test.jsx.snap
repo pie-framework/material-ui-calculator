@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className={undefined}
+>
+  <div
+    className="Component-mode-1 Component-active-2"
+    onClick={[Function]}
+  >
+    deg
+  </div>
+  <div
+    className="Component-mode-1"
+    onClick={[Function]}
+  >
+    rad
+  </div>
+</div>
+`;
