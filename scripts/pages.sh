@@ -5,5 +5,6 @@ cd demo
 git init
 git add .
 git commit . -m "pages"
-git remote add origin git@github.com:pie-framework/material-ui-calculator
-git push --force origin/gh-pages
+git remote add origin git@github.com:pie-framework/material-ui-calculator.git
+git push --force origin master:gh-pages
+rm -fr .git
