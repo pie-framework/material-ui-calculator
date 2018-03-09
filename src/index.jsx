@@ -10,12 +10,10 @@ const log = debug('@pie-framework:material-ui-calculator');
 const evaluate = (expr, angleMode) => {
   try {
     const angleMode = angleMode === 'deg' ? AngleMode.DEGREES : AngleMode.RADIANS;
-    const result = calculate(expr, { angleMode });
-    log('result: ', result);
-    return result.value.toString();
+    return calculate(expr, { angleMode });
   } catch (e) {
     log('error: ', e.message);
-    return undefined;
+    return { value: '', error: e };
   }
 }
 
@@ -32,12 +30,13 @@ export default class Main extends React.Component {
   onEvaluate = (expression) => {
     const result = evaluate(expression, 'rad');
 
-    if (this.props.onEvaluationComplete) {
-      this.props.onEvaluationComplete(expression, result);
+    if (this.props.onEvaluationComplete && !result.error) {
+      this.props.onEvaluationComplete(expression, result.value);
     }
 
     this.setState({
-      expr: result
+      expr: (result.value || expression).toString(),
+      error: result.error
     });
   }
 
@@ -45,15 +44,23 @@ export default class Main extends React.Component {
     this.setState({ angleMode });
   }
 
-  render() {
-    const { expr, angleMode } = this.state;
+  onClearError = () => {
+    if (this.state.error) {
+      this.setState({ error: undefined });
+    }
+  }
 
+  render() {
+    const { mode } = this.props;
+    const { expr, angleMode, error } = this.state;
     return (
       <Calculator
-        mode={'scientific'}
+        mode={mode}
         angleMode={angleMode}
         onAngleModeChange={this.onAngleModeChange}
         expr={expr}
+        error={error}
+        onClearError={this.onClearError}
         onEvaluate={this.onEvaluate} />
     );
   }

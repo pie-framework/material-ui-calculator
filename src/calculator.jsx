@@ -8,22 +8,13 @@ import { handleInput } from './math-input';
 import { withStyles } from 'material-ui/styles';
 import Basic from './basic';
 import Display from './display';
+import classNames from 'classnames';
 
 export { SelectableInput }
 
 const log = debug('@pie-framework:material-ui-calculator');
 
-/** 1. an input with 
- * selectionStart
- * selectionEnd
- * value
- * 
- * onSelectionChange
- * onValueChange
- */
-
-
-export class StatefulCalculator extends React.Component {
+export class Calculator extends React.Component {
 
   constructor(props) {
     super(props);
@@ -35,8 +26,13 @@ export class StatefulCalculator extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    const { expr } = nextProps;
-    log('[componentWilReceiveProps] expr: ', nextProps);
+    const { expr, error } = nextProps;
+    log('[componentWilReceiveProps] expr: ', expr, this.state.expr);
+
+    log('error: ', error, this.props.error);
+    if (error !== this.props.error) {
+      return;
+    }
 
     if (expr !== this.state.expr) {
       this.setState({
@@ -47,14 +43,8 @@ export class StatefulCalculator extends React.Component {
     }
   }
 
-  // onEnter = () => {
-  //   log('[onEnter]');
-  //   const calculator = reduce(this.state.calculator, Inputs.EQUALS);
-  //   log('[onEnter] calculator: ', calculator);
-  //   this.setState({ calculator });
-  // }
-
   onChange = e => {
+    this.props.onClearError();
     this.setState({
       expr: e.target.value,
       selectionStart: e.target.selectionStart,
@@ -114,10 +104,8 @@ export class StatefulCalculator extends React.Component {
           selectionEnd: result.selectionEnd,
           superscript: result.superscript
         });
-
       }
     }
-
     this.input.focus();
   }
 
@@ -171,7 +159,7 @@ export class StatefulCalculator extends React.Component {
   }
 
   render() {
-    const { classes, mode, angleMode, onAngleModeChange } = this.props;
+    const { classes, mode, angleMode, onAngleModeChange, error } = this.props;
     const {
       expr,
       selectionStart,
@@ -179,12 +167,15 @@ export class StatefulCalculator extends React.Component {
       superscript,
       focused } = this.state;
 
+    const names = classNames(mode === 'scientific' ? classes.scientificCalculator : classes.basicCalculator);
     return (
-      <div>
+      <div className={names}>
         <Display
           angleMode={angleMode}
+          showAngleMode={mode === 'scientific'}
           onAngleModeChange={onAngleModeChange}
-          focused={focused}>
+          focused={focused}
+          error={error}>
           <SelectableInput
             className={classes.selectableInput}
             inputRef={r => this.input = r}
@@ -199,12 +190,12 @@ export class StatefulCalculator extends React.Component {
             superscript={superscript}
             theme={{
               root: classes.root,
-              input: classes.input
+              input: classNames(classes.input, error && classes.inputError)
             }} />
         </Display>
         <div className={classes.padHolder}>
           <Basic
-            className={classes.basic}
+            className={classes.basic, mode === 'basic' && classes.onlyBasic}
             onInput={this.onInput} />
           {mode === 'scientific' && (
             <Scientific
@@ -216,14 +207,22 @@ export class StatefulCalculator extends React.Component {
   }
 }
 
-StatefulCalculator.propTypes = {
+Calculator.propTypes = {
   angleMode: PropTypes.oneOf(['deg', 'rad']).isRequired,
   onAngleModeChange: PropTypes.func.isRequired,
   expr: PropTypes.string.isRequired,
-  onEvaluate: PropTypes.func.isRequired
+  onEvaluate: PropTypes.func.isRequired,
+  error: PropTypes.object,
+  onClearError: PropTypes.func
 }
 
 export default withStyles(theme => ({
+  basicCalculator: {
+    maxWidth: '300px'
+  },
+  scientificCalculator: {
+    maxWidth: '600px'
+  },
   selectableInput: {
     width: '100%'
   },
@@ -235,7 +234,16 @@ export default withStyles(theme => ({
     fontSize: '40px',
     textAlign: 'right'
   },
+  inputError: {
+    color: 'red'
+  },
   padHolder: {
     display: 'flex'
   },
-}))(StatefulCalculator);
+  basic: {
+    color: 'green'
+  },
+  onlyBasic: {
+    flex: '1'
+  }
+}))(Calculator);

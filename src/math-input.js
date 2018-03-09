@@ -17,6 +17,11 @@ const map = {
   9: '⁹',
 };
 
+const fn = n => ({
+  match: n,
+  emit: `${n}(|)`
+});
+
 const INPUTS = [
   {
     match: /[\+\-\(\)]/,
@@ -63,29 +68,18 @@ const INPUTS = [
     match: 'cube',
     emit: map[3]
   },
+  fn('sin'),
+  fn('cos'),
+  fn('tan'),
+  fn('asin'),
+  fn('acos'),
+  fn('atan'),
+  fn('log'),
+  fn('ln'),
+  fn('abs'),
   {
-    match: 'sin',
-    emit: 'sin(|)'
-  },
-  {
-    match: 'cos',
-    emit: 'cos(|)'
-  },
-  {
-    match: 'tan',
-    emit: 'tan(|)'
-  },
-  {
-    match: 'log',
-    emit: 'log(|)'
-  },
-  {
-    match: 'ln',
-    emit: 'ln(|)'
-  },
-  {
-    match: 'abs',
-    emit: 'abs(|)'
+    match: '%',
+    emit: '%'
   },
   {
     match: '!',

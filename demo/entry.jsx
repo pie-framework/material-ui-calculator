@@ -3,8 +3,47 @@ import ReactDOM from 'react-dom';
 import Calculator from '../src';
 import Button from 'material-ui/Button';
 import debug from 'debug';
+import { withStyles } from 'material-ui/styles';
 
 const log = debug('@pie-framework:demo');
+
+class DemoCalc extends React.Component {
+
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      history: []
+    }
+  }
+
+  onEvaluationComplete = (expression, result) => {
+    const { history } = this.state;
+    history.push({ expression, result });
+    this.setState({ history });
+  }
+
+  render() {
+    const { mode, classes } = this.props;
+
+    return (
+      <div>
+        <Calculator
+          mode={mode}
+          onEvaluationComplete={this.onEvaluationComplete} />
+        <pre className={classes.pre}>
+          {JSON.stringify(this.state, null, '  ')}
+        </pre>
+      </div>
+    );
+  }
+}
+
+const StyledDemoCalc = withStyles(theme => ({
+  pre: {
+    textAlign: 'center'
+  }
+}))(DemoCalc);
 
 class Demo extends React.Component {
 
@@ -46,21 +85,21 @@ class Demo extends React.Component {
   }
 
   render() {
-
-    const { selectable } = this.state;
+    const { classes } = this.props;
 
     return (
-      <div>
-        <div>
-          <Calculator
-            mode="scientific"
-            onEvaluationComplete={this.onEvaluationComplete} />
-        </div>
-        <pre>
-          {JSON.stringify(this.state, null, '  ')}
-        </pre>
+      <div className={classes.demo}>
+        <StyledDemoCalc mode="basic" />
+        <StyledDemoCalc mode="scientific" />
       </div>)
   }
 }
-const el = React.createElement(Demo, {});
+
+const Styled = withStyles(theme => ({
+  demo: {
+    margin: '0 auto',
+    textAlign: 'center'
+  }
+}))(Demo);
+const el = React.createElement(Styled, {});
 ReactDOM.render(el, document.querySelector('#app'));
