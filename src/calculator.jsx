@@ -167,7 +167,7 @@ export class Calculator extends React.Component {
       superscript,
       focused } = this.state;
 
-    const names = classNames(mode === 'scientific' ? classes.scientificCalculator : classes.basicCalculator);
+    const names = classNames(classes.calculator, mode === 'scientific' ? classes.scientificCalculator : classes.basicCalculator);
     return (
       <div className={names}>
         <Display
@@ -217,6 +217,9 @@ Calculator.propTypes = {
 }
 
 export default withStyles(theme => ({
+  calculator: {
+    backgroundColor: 'white'
+  },
   basicCalculator: {
     maxWidth: '300px'
   },
