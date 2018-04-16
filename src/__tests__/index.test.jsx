@@ -1,32 +1,30 @@
 import React from 'react';
 import Calculator from '../index';
 import Enzyme, { shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-15';
+import Adapter from 'enzyme-adapter-react-16';
 import { calculate } from '@pie-framework/expression-parser';
 
 jest.mock('@pie-framework/expression-parser', () => {
   return {
     calculate: jest.fn().mockReturnValue({ value: '1', error: undefined }),
     AngleMode: { DEGREES: 'deg', RADIANS: 'rad' }
-  }
+  };
 });
 
-Enzyme.configure({ adapter: new Adapter() })
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('Calculator', () => {
-
   let wrapper, props;
 
   beforeEach(() => {
     props = {
       onEvaluationComplete: jest.fn(),
       mode: 'basic'
-    }
+    };
     wrapper = shallow(<Calculator {...props} />);
   });
 
   describe('onEvaluate', () => {
-
     beforeEach(() => {
       calculate.mockReset();
       calculate.mockReturnValue({ value: '1', error: undefined });
@@ -38,7 +36,7 @@ describe('Calculator', () => {
     });
 
     it('call onEvaluationComplete', () => {
-      expect(props.onEvaluationComplete.mock.calls[0][0]).toEqual('1 + 1', '1')
+      expect(props.onEvaluationComplete.mock.calls[0][0]).toEqual('1 + 1', '1');
     });
 
     it('sets the state', () => {
@@ -46,7 +44,6 @@ describe('Calculator', () => {
     });
 
     it('uses the angle mode', () => {
-
       wrapper.setState({ angleMode: 'deg' });
       calculate.mockReset();
       calculate.mockReturnValue({ value: '1', error: undefined });
@@ -62,7 +59,7 @@ describe('Calculator', () => {
       beforeEach(() => {
         error = {
           e: new Error('foo')
-        }
+        };
 
         calculate.mockReturnValue({ value: undefined, error });
         wrapper.instance().onEvaluate('1 + 1', 'rad');

@@ -2,7 +2,7 @@ import renderer from 'react-test-renderer';
 import React from 'react';
 import SelectableInput from '../selectable-input';
 import Enzyme, { shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-15';
+import Adapter from 'enzyme-adapter-react-16';
 import TextField from 'material-ui/TextField';
 
 Enzyme.configure({ adapter: new Adapter() });
@@ -10,7 +10,6 @@ Enzyme.configure({ adapter: new Adapter() });
 let mockInput, props;
 
 describe('selectable-input', () => {
-
   const mkWrapper = () => {
     props = {
       inputRef: jest.fn(),
@@ -19,7 +18,7 @@ describe('selectable-input', () => {
       value: 'test',
       inputRef: jest.fn(),
       onKeyDown: jest.fn()
-    }
+    };
 
     const out = shallow(<SelectableInput {...props} />);
 
@@ -27,14 +26,13 @@ describe('selectable-input', () => {
       focus: jest.fn(),
       selectionStart: 1,
       selectionEnd: 2
-    }
+    };
 
     out.instance().inputRef(mockInput);
     return out;
-  }
+  };
 
   describe('TextField', () => {
-
     it('disabledUnderline: true', () => {
       const wrapper = mkWrapper();
       expect(wrapper.find(TextField).prop('InputProps')).toMatchObject({
@@ -52,7 +50,6 @@ describe('selectable-input', () => {
   });
 
   describe('onKeyUp', () => {
-
     it('calls onSelectionChange', () => {
       const wrapper = mkWrapper();
       wrapper.find(TextField).prop('onKeyUp')();
@@ -65,9 +62,10 @@ describe('selectable-input', () => {
 
   describe('onChange', () => {
     it('calls onChange', () => {
-
       const wrapper = mkWrapper();
-      wrapper.find(TextField).prop('onChange')({ target: { value: 'v', selectionStart: 0, selectionEnd: 1 } });
+      wrapper.find(TextField).prop('onChange')({
+        target: { value: 'v', selectionStart: 0, selectionEnd: 1 }
+      });
 
       expect(props.onChange.mock.calls[0][0]).toEqual({
         target: {
@@ -80,7 +78,6 @@ describe('selectable-input', () => {
   });
 
   describe('onClick', () => {
-
     it('calls selectionChange', () => {
       const wrapper = mkWrapper();
       wrapper.find(TextField).prop('onClick')();
@@ -102,7 +99,7 @@ describe('selectable-input', () => {
       const wrapper = mkWrapper();
       const e = {
         target: { value: 'target' }
-      }
+      };
 
       wrapper.find(TextField).prop('onKeyDown')(e);
       expect(props.onKeyDown.mock.calls[0][0]).toEqual(e);

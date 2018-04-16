@@ -1,26 +1,27 @@
 import React from 'react';
 import { Calculator } from '../calculator';
 import Enzyme, { shallow } from 'enzyme';
-import Adapter from 'enzyme-adapter-react-15';
+import Adapter from 'enzyme-adapter-react-16';
 import TextField from 'material-ui/TextField';
 import { handleInput } from '../math-input';
 
 jest.mock('../math-input', () => {
   return {
-    handleInput: jest.fn().mockReturnValue({ value: '', selectionStart: 0, selectionEnd: 0 })
-  }
+    handleInput: jest
+      .fn()
+      .mockReturnValue({ value: '', selectionStart: 0, selectionEnd: 0 })
+  };
 });
 
-const mockEvent = (d) => ({
+const mockEvent = d => ({
   stopPropagation: jest.fn(),
   preventDefault: jest.fn(),
   ...d
-})
+});
 
-Enzyme.configure({ adapter: new Adapter() })
+Enzyme.configure({ adapter: new Adapter() });
 
 describe('calculator', () => {
-
   let wrapper, props, mockInput;
 
   beforeEach(() => {
@@ -30,18 +31,17 @@ describe('calculator', () => {
       expr: '1 + 1',
       onEvaluate: jest.fn(),
       classes: {}
-    }
+    };
 
     mockInput = {
       focus: jest.fn()
-    }
+    };
 
     wrapper = shallow(<Calculator {...props} />);
     wrapper.instance().input = mockInput;
   });
 
   describe('onInput', () => {
-
     beforeEach(() => {
       handleInput.mockReset();
     });
@@ -53,7 +53,11 @@ describe('calculator', () => {
 
     describe('handleInput', () => {
       beforeEach(() => {
-        handleInput.mockReturnValue({ value: 'a', selectionStart: 1, selectionEnd: 1 });
+        handleInput.mockReturnValue({
+          value: 'a',
+          selectionStart: 1,
+          selectionEnd: 1
+        });
         wrapper.instance().onInput('a');
       });
 
@@ -64,13 +68,10 @@ describe('calculator', () => {
       it('updates the state', () => {
         expect(wrapper.state().expr).toEqual('a');
       });
-
     });
   });
 
   describe('onKeyDown', () => {
-
-
     let e;
 
     const assertEnter = key => {
@@ -91,9 +92,8 @@ describe('calculator', () => {
         it('calls stopPropagation', () => {
           expect(e.stopPropagation.mock.calls.length).toEqual(1);
         });
-
       });
-    }
+    };
 
     assertEnter('Enter');
     assertEnter('=');
@@ -102,7 +102,11 @@ describe('calculator', () => {
       describe('handleInput', () => {
         beforeEach(() => {
           handleInput.mockReset();
-          handleInput.mockReturnValue({ value: 'a', selectionStart: 0, selectionEnd: 0 })
+          handleInput.mockReturnValue({
+            value: 'a',
+            selectionStart: 0,
+            selectionEnd: 0
+          });
           wrapper.instance().onKeyDown(mockEvent({ key: 'a' }));
         });
 
@@ -129,10 +133,8 @@ describe('calculator', () => {
         it('does not update the state', () => {
           expect(wrapper.state().expr).toEqual('1 + 1');
         });
-
       });
     });
-
   });
 
   describe('onBlur', () => {
