@@ -23,6 +23,7 @@ exports[`renders correctly 1`] = `
   <div
     className="Display-expr-5"
   >
+    foo
      
   </div>
 </div>

@@ -5,7 +5,7 @@ exports[`renders correctly 1`] = `
   className="Scientific-scientific-1"
 >
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -21,7 +21,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -37,7 +37,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -53,7 +53,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -69,7 +69,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -85,7 +85,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -101,7 +101,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -117,7 +117,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -133,7 +133,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -149,7 +149,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -165,7 +165,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -181,7 +181,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -197,7 +197,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -213,7 +213,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -229,7 +229,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -245,7 +245,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -261,7 +261,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -277,7 +277,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div
@@ -293,7 +293,7 @@ exports[`renders correctly 1`] = `
     </div>
   </div>
   <div
-    className="Component-pad-5 Scientific-pad-2"
+    className="Pad-pad-3 Scientific-pad-2"
     style={undefined}
   >
     <div

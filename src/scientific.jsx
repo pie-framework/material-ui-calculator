@@ -4,6 +4,7 @@ import { withStyles } from 'material-ui/styles';
 import Pad from './pad';
 import classNames from 'classnames';
 import { AngleInput, UnaryInput, Inputs, LogInput } from './symbols';
+import * as colors from './colors';
 
 const items = [
   '(',
@@ -25,10 +26,15 @@ const items = [
   { label: 'x<sup>y</sup>', value: '^' },
   Inputs.FRACTION,
   Inputs.EXPONENT,
-  UnaryInput.ABS,
-]
+  UnaryInput.ABS
+];
 
 export class Scientific extends React.Component {
+  static propTypes = {
+    onInput: PropTypes.func.isRequired,
+    classes: PropTypes.object.isRequired,
+    activeMode: PropTypes.oneOf(['deg', 'rad'])
+  };
 
   render() {
     const { onInput, classes, activeMode } = this.props;
@@ -40,12 +46,17 @@ export class Scientific extends React.Component {
           return (
             <Pad
               theme={{
-                root: classNames(classes.pad, i && classes[i.kind], active && classes.active)
+                root: classNames(
+                  classes.pad,
+                  i && classes[i.kind],
+                  active && classes.active
+                )
               }}
               active={props.label === activeMode}
               onClick={onInput}
               key={index}
-              {...props} />
+              {...props}
+            />
           );
         })}
       </div>
@@ -53,23 +64,18 @@ export class Scientific extends React.Component {
   }
 }
 
-Scientific.propTypes = {}
+Scientific.propTypes = {};
 
-const styles = theme => ({
+const styles = () => ({
   scientific: {
+    paddingLeft: '1px',
     display: 'grid',
     gridGap: '1px',
     flex: 0.5,
     gridTemplateColumns: 'repeat(4, 1fr)'
   },
   pad: {
-    backgroundColor: theme.palette.secondary[300]
-  },
-  'angle-mode': {
-    backgroundColor: 'green'
-  },
-  active: {
-    backgroundColor: 'lightgreen'
+    backgroundColor: colors.secondary.light
   }
 });
 

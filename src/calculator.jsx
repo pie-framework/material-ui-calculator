@@ -9,12 +9,23 @@ import { withStyles } from 'material-ui/styles';
 import Basic from './basic';
 import Display from './display';
 import classNames from 'classnames';
+import * as colors from './colors';
 
-export { SelectableInput }
+export { SelectableInput };
 
 const log = debug('@pie-framework:material-ui-calculator');
 
 export class Calculator extends React.Component {
+  static propTypes = {
+    angleMode: PropTypes.oneOf(['deg', 'rad']).isRequired,
+    onAngleModeChange: PropTypes.func.isRequired,
+    expr: PropTypes.string.isRequired,
+    onEvaluate: PropTypes.func.isRequired,
+    error: PropTypes.object,
+    onClearError: PropTypes.func,
+    classes: PropTypes.object.isRequired,
+    mode: PropTypes.oneOf(['basic', 'scientific'])
+  };
 
   constructor(props) {
     super(props);
@@ -22,7 +33,7 @@ export class Calculator extends React.Component {
       expr: props.expr,
       selectionStart: 0,
       selectionEnd: 0
-    }
+    };
   }
 
   componentWillReceiveProps(nextProps) {
@@ -51,14 +62,14 @@ export class Calculator extends React.Component {
       selectionEnd: e.target.selectionEnd,
       superscript: e.target.superscript
     });
-  }
+  };
 
   onSelectionChange = update => {
     this.setState({
       selectionStart: update.selectionStart,
-      selectionEnd: update.selectionEnd,
+      selectionEnd: update.selectionEnd
     });
-  }
+  };
 
   onInput = value => {
     log('[onInput]: ', value);
@@ -71,12 +82,22 @@ export class Calculator extends React.Component {
       return;
     }
 
-    const result = handleInput(value, expr, selectionStart, selectionEnd, superscript);
+    const result = handleInput(
+      value,
+      expr,
+      selectionStart,
+      selectionEnd,
+      superscript
+    );
 
     if (result) {
       if (result.passthrough) {
         this.setState({
-          expr: insertAt(expr, { start: selectionStart, end: selectionEnd }, value),
+          expr: insertAt(
+            expr,
+            { start: selectionStart, end: selectionEnd },
+            value
+          ),
           selectionStart: selectionStart + value.length,
           selectionEnd: selectionEnd + value.length,
           superscript
@@ -91,20 +112,24 @@ export class Calculator extends React.Component {
       }
     }
     this.input.focus();
-  }
+  };
 
   onFocus = () => {
     this.setState({ focused: true });
-  }
+  };
 
   onBlur = () => {
     this.setState({ focused: false });
-  }
+  };
 
   onKeyDown = e => {
-
-    if (e.key === 'ArrowRight' || e.key === 'ArrowLeft' ||
-      (e.key === 'a' && e.metaKey) || e.key === 'Tab' || e.key === 'Backspace') {
+    if (
+      e.key === 'ArrowRight' ||
+      e.key === 'ArrowLeft' ||
+      (e.key === 'a' && e.metaKey) ||
+      e.key === 'Tab' ||
+      e.key === 'Backspace'
+    ) {
       return;
     }
 
@@ -114,17 +139,23 @@ export class Calculator extends React.Component {
       log('ENTER');
       const { expr } = this.state;
       const { onEvaluate } = this.props;
-      onEvaluate(expr)
+      onEvaluate(expr);
       return;
     }
 
     log('[onKeyDown] e.key', e.key);
     const { selectionStart, selectionEnd, superscript, expr } = this.state;
-    const result = handleInput(e.key, expr, selectionStart, selectionEnd, superscript);
+    const result = handleInput(
+      e.key,
+      expr,
+      selectionStart,
+      selectionEnd,
+      superscript
+    );
     log('[onKeyDown] result: ', result);
 
     if (result && result.passthrough) {
-      /** 
+      /**
        * just let the input handle the keydown - this will go through onChange
        */
       return;
@@ -134,7 +165,6 @@ export class Calculator extends React.Component {
     e.stopPropagation();
 
     if (result) {
-
       this.setState({
         expr: result.value,
         selectionStart: result.selectionStart,
@@ -142,7 +172,7 @@ export class Calculator extends React.Component {
         superscript: result.superscript
       });
     }
-  }
+  };
 
   render() {
     const { classes, mode, angleMode, onAngleModeChange, error } = this.props;
@@ -151,9 +181,15 @@ export class Calculator extends React.Component {
       selectionStart,
       selectionEnd,
       superscript,
-      focused } = this.state;
+      focused
+    } = this.state;
 
-    const names = classNames(classes.calculator, mode === 'scientific' ? classes.scientificCalculator : classes.basicCalculator);
+    const names = classNames(
+      classes.calculator,
+      mode === 'scientific'
+        ? classes.scientificCalculator
+        : classes.basicCalculator
+    );
     return (
       <div className={names}>
         <Display
@@ -161,10 +197,11 @@ export class Calculator extends React.Component {
           showAngleMode={mode === 'scientific'}
           onAngleModeChange={onAngleModeChange}
           focused={focused}
-          error={error}>
+          error={error}
+        >
           <SelectableInput
             className={classes.selectableInput}
-            inputRef={r => this.input = r}
+            inputRef={r => (this.input = r)}
             onChange={this.onChange}
             onSelectionChange={this.onSelectionChange}
             value={expr}
@@ -177,32 +214,25 @@ export class Calculator extends React.Component {
             theme={{
               root: classes.root,
               input: classNames(classes.input, error && classes.inputError)
-            }} />
+            }}
+          />
         </Display>
         <div className={classes.padHolder}>
           <Basic
-            className={classes.basic, mode === 'basic' && classes.onlyBasic}
-            onInput={this.onInput} />
-          {mode === 'scientific' && (
-            <Scientific
-              onInput={this.onInput} />
-          )}
+            className={classNames(
+              classes.basic,
+              mode === 'basic' && classes.onlyBasic
+            )}
+            onInput={this.onInput}
+          />
+          {mode === 'scientific' && <Scientific onInput={this.onInput} />}
         </div>
       </div>
     );
   }
 }
 
-Calculator.propTypes = {
-  angleMode: PropTypes.oneOf(['deg', 'rad']).isRequired,
-  onAngleModeChange: PropTypes.func.isRequired,
-  expr: PropTypes.string.isRequired,
-  onEvaluate: PropTypes.func.isRequired,
-  error: PropTypes.object,
-  onClearError: PropTypes.func
-}
-
-export default withStyles(theme => ({
+export default withStyles(() => ({
   calculator: {
     backgroundColor: 'white'
   },
@@ -224,7 +254,7 @@ export default withStyles(theme => ({
     textAlign: 'right'
   },
   inputError: {
-    color: 'red'
+    color: colors.error
   },
   padHolder: {
     display: 'flex'

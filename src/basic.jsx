@@ -2,11 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import classNames from 'classnames';
-import debug from 'debug';
-import IconButton from 'material-ui/IconButton';
 import Pad from './pad';
-
-const log = debug('material-ui-calculator:basic');
 
 const items = [
   { label: 'C', value: 'clear' },
@@ -27,10 +23,16 @@ const items = [
   { label: '+', value: '+', kind: 'operator' },
   '0',
   '.',
-  { label: '=', value: 'equals', kind: 'operator' },
-]
+  { label: '=', value: 'equals', kind: 'operator' }
+];
 
 export class Basic extends React.Component {
+  static propTypes = {
+    classes: PropTypes.object.isRequired,
+    onInput: PropTypes.func.isRequired,
+    className: PropTypes.string
+  };
+
   render() {
     const { classes, onInput, className } = this.props;
 
@@ -39,11 +41,13 @@ export class Basic extends React.Component {
     return (
       <div className={names}>
         {items.map((i, index) => {
-
           const props = typeof i === 'string' ? { label: i, value: i } : i;
-          const positionStyle = (props.label === '0') ? {
-            gridColumn: '1/3'
-          } : {};
+          const positionStyle =
+            props.label === '0'
+              ? {
+                  gridColumn: '1/3'
+                }
+              : {};
 
           return (
             <Pad
@@ -53,8 +57,9 @@ export class Basic extends React.Component {
                 root: classes[i.kind]
               }}
               {...props}
-              onClick={onInput} />
-          )
+              onClick={onInput}
+            />
+          );
         })}
       </div>
     );
@@ -70,6 +75,6 @@ export default withStyles(theme => ({
     gridTemplateColumns: 'repeat(4, 1fr)'
   },
   operator: {
-    backgroundColor: theme.palette.primary[400]
+    backgroundColor: theme.palette.secondary.light
   }
 }))(Basic);

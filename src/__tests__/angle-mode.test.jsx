@@ -4,7 +4,7 @@ import React from 'react';
 
 it('renders correctly', () => {
   const tree = renderer
-    .create(<AngleMode angleMode="deg" />)
+    .create(<AngleMode angleMode="deg" onChange={jest.fn()} />)
     .toJSON();
   expect(tree).toMatchSnapshot();
 });

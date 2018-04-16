@@ -2,12 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TextField from 'material-ui/TextField';
 import debug from 'debug';
-import { insertAt } from './utils';
-import { handleInput } from './math-input';
 
 const log = debug('@pie-framework:material-ui-calculator');
 
 export default class SelectableInput extends React.Component {
+  static propTypes = {
+    onKeyDown: PropTypes.func,
+    inputRef: PropTypes.func,
+    onSelectionChange: PropTypes.func.isRequired,
+    onChange: PropTypes.func.isRequired,
+    value: PropTypes.string.isRequired,
+    selectionEnd: PropTypes.number,
+    selectionStart: PropTypes.number,
+    className: PropTypes.string,
+    theme: PropTypes.object,
+    onFocus: PropTypes.func,
+    onBlur: PropTypes.func
+  };
 
   focus() {
     this.input.focus();
@@ -26,9 +37,9 @@ export default class SelectableInput extends React.Component {
       const { selectionEnd, selectionStart } = this.props;
       this.input.selectionStart = selectionStart;
       this.input.selectionEnd = selectionEnd;
-      log('input: ', this.input.selectionStart, this.input.selectionEnd)
+      log('input: ', this.input.selectionStart, this.input.selectionEnd);
     }
-  }
+  };
 
   onKeyUp = () => {
     log('[onKeyUp]');
@@ -38,7 +49,7 @@ export default class SelectableInput extends React.Component {
     if (update) {
       onSelectionChange(update);
     }
-  }
+  };
 
   onChange = event => {
     log('[onChange]');
@@ -51,20 +62,21 @@ export default class SelectableInput extends React.Component {
         selectionEnd: event.target.selectionEnd
       }
     });
-  }
+  };
 
-  getUpdate = () => this.input && ({
-    selectionStart: this.input.selectionStart,
-    selectionEnd: this.input.selectionEnd
-  });
+  getUpdate = () =>
+    this.input && {
+      selectionStart: this.input.selectionStart,
+      selectionEnd: this.input.selectionEnd
+    };
 
-  onClick = event => {
+  onClick = () => {
     const { onSelectionChange } = this.props;
     const update = this.getUpdate();
     if (update) {
       onSelectionChange(update);
     }
-  }
+  };
 
   inputRef = r => {
     this.input = r;
@@ -72,20 +84,19 @@ export default class SelectableInput extends React.Component {
     if (inputRef) {
       inputRef(this.input);
     }
-  }
+  };
 
   onKeyDown = e => {
     const { onKeyDown } = this.props;
     if (onKeyDown) {
       onKeyDown(e);
     }
-  }
+  };
 
   render() {
+    const { value, className, theme, onFocus, onBlur } = this.props;
 
-    const { value, className, onKeyDown, theme, onFocus, onBlur } = this.props;
-
-    const inputTheme = theme ? theme : {}
+    const inputTheme = theme ? theme : {};
     return (
       <TextField
         className={className}
@@ -100,15 +111,8 @@ export default class SelectableInput extends React.Component {
         InputProps={{
           disableUnderline: true,
           classes: inputTheme
-        }} />
+        }}
+      />
     );
   }
-}
-
-SelectableInput.propTypes = {
-  onKeyDown: PropTypes.func,
-  inputRef: PropTypes.func,
-  onSelectionChange: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string.isRequired
 }

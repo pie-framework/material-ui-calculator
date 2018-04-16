@@ -2,7 +2,7 @@
 
 exports[`renders correctly 1`] = `
 <div
-  className="Component-pad-1"
+  className="Pad-pad-1"
   style={undefined}
 >
   <div
@@ -11,7 +11,7 @@ exports[`renders correctly 1`] = `
     <div
       dangerouslySetInnerHTML={
         Object {
-          "__html": undefined,
+          "__html": "1",
         }
       }
     />

@@ -4,7 +4,6 @@ import Calculator from './calculator';
 import debug from 'debug';
 import { calculate, AngleMode } from '@pie-framework/expression-parser';
 
-
 const log = debug('@pie-framework:material-ui-calculator');
 
 const evaluate = (expr, am) => {
@@ -17,19 +16,23 @@ const evaluate = (expr, am) => {
     log('error: ', e.message);
     return { value: '', error: e };
   }
-}
+};
 
 export default class Main extends React.Component {
+  static propTypes = {
+    mode: PropTypes.oneOf(['basic', 'scientific']).isRequired,
+    onEvaluationComplete: PropTypes.func
+  };
 
   constructor(props) {
     super(props);
     this.state = {
       expr: '',
       angleMode: 'rad'
-    }
+    };
   }
 
-  onEvaluate = (expression) => {
+  onEvaluate = expression => {
     log('onEvaluate: state: ', this.state);
     const result = evaluate(expression, this.state.angleMode);
 
@@ -41,17 +44,17 @@ export default class Main extends React.Component {
       expr: (result.value || expression).toString(),
       error: result.error
     });
-  }
+  };
 
   onAngleModeChange = angleMode => {
     this.setState({ angleMode });
-  }
+  };
 
   onClearError = () => {
     if (this.state.error) {
       this.setState({ error: undefined });
     }
-  }
+  };
 
   render() {
     const { mode } = this.props;
@@ -64,11 +67,8 @@ export default class Main extends React.Component {
         expr={expr}
         error={error}
         onClearError={this.onClearError}
-        onEvaluate={this.onEvaluate} />
+        onEvaluate={this.onEvaluate}
+      />
     );
   }
-}
-
-Main.propTypes = {
-  mode: PropTypes.oneOf(['basic', 'scientific']).isRequired
 }

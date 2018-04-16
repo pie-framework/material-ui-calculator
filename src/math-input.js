@@ -16,7 +16,7 @@ const map = {
   6: '⁶',
   7: '⁷',
   8: '⁸',
-  9: '⁹',
+  9: '⁹'
 };
 
 const fn = n => ({
@@ -26,7 +26,7 @@ const fn = n => ({
 
 const INPUTS = [
   {
-    match: /^[\+\-\(\)]$/,
+    match: /^[\+\-\(\)]$/, //eslint-disable-line
     passthrough: true
   },
   {
@@ -117,7 +117,7 @@ const INPUTS = [
           start: position.start + (added ? 1 : -1),
           end: position.end + (added ? 1 : -1)
         }
-      }
+      };
     }
   }
 ];
@@ -125,7 +125,6 @@ const INPUTS = [
 const getSuperscript = char => map[char];
 
 const buildUpdate = (value, start, end, emit) => {
-
   const result = select(emit);
 
   log('[buildUpdate] result: ', result);
@@ -135,11 +134,10 @@ const buildUpdate = (value, start, end, emit) => {
     update: valueUpdate,
     start: start + result.start,
     end: start + result.end
-  }
-}
+  };
+};
 
 const isMatch = (match, input) => {
-
   const m = Array.isArray(match) ? match : [match];
 
   const matches = m => {
@@ -149,58 +147,77 @@ const isMatch = (match, input) => {
     } else {
       return m === input;
     }
-  }
+  };
   return m.some(matches);
-}
+};
 
-export const handleInput = (input, value, selectionStart, selectionEnd, superscript) => {
-
-  invariant(superscript ? isRegExp(superscript) : true, `superscript must be RegExp if defined but got: ${superscript}`);
+export const handleInput = (
+  input,
+  value,
+  selectionStart,
+  selectionEnd,
+  superscript
+) => {
+  invariant(
+    superscript ? isRegExp(superscript) : true,
+    `superscript must be RegExp if defined but got: ${superscript}`
+  );
 
   if (superscript && superscript.test(input)) {
     const sv = getSuperscript(input);
     log('[handleInput] sv: ', sv);
     if (sv) {
-      const { update, start, end } = buildUpdate(value, selectionStart, selectionEnd, sv);
+      const { update, start, end } = buildUpdate(
+        value,
+        selectionStart,
+        selectionEnd,
+        sv
+      );
       log('[handleInput] superscript: update: ', update, start, end);
       return {
         value: update,
         selectionStart: update.length,
         selectionEnd: update.length,
         superscript
-      }
+      };
     }
   }
 
   const handler = INPUTS.find(v => isMatch(v.match, input));
 
   if (handler) {
-
     log('[handleInput] handler: ', handler);
 
     if (handler.passthrough) {
       return {
         passthrough: true
-      }
+      };
     } else {
-
       if (isFunction(handler.emit)) {
-        const o = handler.emit(value, { start: selectionStart, end: selectionEnd });
+        const o = handler.emit(value, {
+          start: selectionStart,
+          end: selectionEnd
+        });
         return {
           value: o.expr,
           selectionStart: o.position.start,
           selectionEnd: o.position.end,
           superscript: o.superscript || superscript
-        }
+        };
       } else {
-        const { update, start, end } = buildUpdate(value, selectionStart, selectionEnd, handler.emit);
+        const { update, start, end } = buildUpdate(
+          value,
+          selectionStart,
+          selectionEnd,
+          handler.emit
+        );
         return {
           value: update,
           selectionStart: start,
           selectionEnd: end,
           superscript: handler.superscript
-        }
+        };
       }
     }
   }
-}
+};

@@ -1,48 +1,48 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from 'material-ui/styles';
 import IconButton from 'material-ui/IconButton';
+import * as colors from './colors';
 
-const Pad = withStyles(theme => ({
-  pad: {
-    backgroundColor: theme.palette.primary[50]
-  },
-  button: {
-    width: '100%'
-  },
-  operator: {
-    backgroundColor: 'orange'
-  }
-}))((props) => {
-  const {
-    label,
-    classes,
-    theme,
-    style,
-    type,
-    value,
-    onClick } = props;
+export const Pad = props => {
+  const { label, classes, theme, style, value, onClick } = props;
 
   const names = classNames(classes.pad, theme && theme.root);
 
-
-  const handleClick = e => {
-    // e.preventDefault();
+  const handleClick = () => {
     onClick(value);
-  }
+  };
 
   return (
-    <div
-      style={style}
-      className={names}>
+    <div style={style} className={names}>
       <IconButton
         tabIndex="-1"
         className={classes.button}
-        onClick={handleClick}>
+        onClick={handleClick}
+      >
         <div dangerouslySetInnerHTML={{ __html: label }} />
       </IconButton>
     </div>
   );
-});
+};
 
-export default Pad;
+Pad.propTypes = {
+  label: PropTypes.string.isRequired,
+  classes: PropTypes.object.isRequired,
+  theme: PropTypes.object,
+  style: PropTypes.object,
+  value: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired
+};
+
+export default withStyles(() => {
+  return {
+    pad: {
+      backgroundColor: colors.primary.main
+    },
+    button: {
+      width: '100%'
+    }
+  };
+})(Pad);
