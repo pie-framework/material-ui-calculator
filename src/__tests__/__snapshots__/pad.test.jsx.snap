@@ -5,16 +5,37 @@ exports[`renders correctly 1`] = `
   className="Pad-pad-1"
   style={undefined}
 >
-  <div
-    dataName="IconButton"
+  <button
+    className="MuiButtonBase-root-9 MuiIconButton-root-3 Pad-button-2"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex="-1"
+    type="button"
   >
-    <div
-      dangerouslySetInnerHTML={
-        Object {
-          "__html": "1",
+    <span
+      className="MuiIconButton-label-8"
+    >
+      <div
+        dangerouslySetInnerHTML={
+          Object {
+            "__html": "1",
+          }
         }
-      }
+      />
+    </span>
+    <span
+      className="MuiTouchRipple-root-12"
     />
-  </div>
+  </button>
 </div>
 `;
