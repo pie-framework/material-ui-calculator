@@ -42,7 +42,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "scripts": {
-    "test": "test",
+    "test": "jest",
     "clean": "rm  -fr lib",
     "build": "babel src --ignore __tests__ -d lib",
     "release": "npm run clean && npm test && npm run build && release-it"
