@@ -3,5 +3,7 @@ demo
 scripts
 .babelrc
 .eslintignore
-.prettierrc
+.eslintrc.json
+.prettierrc.js
+.release-it.json
 *.png
