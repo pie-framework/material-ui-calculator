@@ -5,7 +5,7 @@ import SelectableInput from './selectable-input';
 import Scientific from './scientific';
 import { insertAt } from './utils';
 import { handleInput } from './math-input';
-import { withStyles } from 'material-ui/styles';
+import { withStyles } from '@material-ui/core/styles';
 import Basic from './basic';
 import Display from './display';
 import classNames from 'classnames';

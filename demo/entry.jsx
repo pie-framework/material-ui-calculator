@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import Calculator from '../src';
-import Button from 'material-ui/Button';
+import Button from '@material-ui/core/Button';
 import debug from 'debug';
-import { withStyles } from 'material-ui/styles';
-import Typography from 'material-ui/Typography';
-import Paper from 'material-ui/Paper';
-import IconButton from 'material-ui/IconButton';
-import { grey } from 'material-ui/colors';
+import { withStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import Paper from '@material-ui/core/Paper';
+import IconButton from '@material-ui/core/IconButton';
+import { grey } from '@material-ui/core/colors';
 
 const log = debug('@pie-framework:demo');
 

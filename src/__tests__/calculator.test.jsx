@@ -2,7 +2,7 @@ import React from 'react';
 import { Calculator } from '../calculator';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import TextField from 'material-ui/TextField';
+import TextField from '@material-ui/core/TextField';
 import { handleInput } from '../math-input';
 
 jest.mock('../math-input', () => {
