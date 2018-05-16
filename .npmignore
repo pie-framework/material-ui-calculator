@@ -7,3 +7,4 @@ scripts
 .prettierrc.js
 .release-it.json
 *.png
+__mocks__
