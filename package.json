@@ -4,13 +4,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "keywords": [
-    "material-ui",
-    "calculator"
-  ],
+  "keywords": ["material-ui", "calculator"],
   "version": "2.1.0",
   "description": "",
-  "main": "src/index.jsx",
+  "main": "lib/index.js",
   "dependencies": {
     "@pie-framework/expression-parser": "^1.4.0",
     "classnames": "^2.2.5",
@@ -45,8 +42,10 @@
     "webpack-dev-server": "^3.1.4"
   },
   "scripts": {
-    "test": "./node_modules/.bin/jest",
-    "release": "./node_modules/.bin/release-it"
+    "test": "test",
+    "clean": "rm  -fr lib",
+    "build": "babel src --ignore __tests__ -d lib",
+    "release": "npm run clean && npm test && npm run build && release-it"
   },
   "author": "",
   "license": "ISC"
