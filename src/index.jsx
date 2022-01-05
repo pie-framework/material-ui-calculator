@@ -41,7 +41,7 @@ export default class Main extends React.Component {
     }
 
     this.setState({
-      expr: (result.value || expression).toString(),
+      expr: (result.value || result.value === 0 ? result.value : expression).toString(),
       error: result.error
     });
   };
