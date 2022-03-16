@@ -8,7 +8,7 @@
     "material-ui",
     "calculator"
   ],
-  "version": "3.1.1",
+  "version": "3.1.2",
   "description": "",
   "main": "lib/index.js",
   "dependencies": {
@@ -23,6 +23,7 @@
     "react": "^15.3.0 || ^16.0.0"
   },
   "devDependencies": {
+    "babel-cli": "^6.6.5",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",
     "babel-jest": "^22.4.3",
@@ -48,6 +49,7 @@
     "test": "jest",
     "clean": "rm  -fr lib",
     "build": "babel src --ignore __tests__ -d lib",
+    "babel-version": "babel --version",
     "release": "npm run clean && npm test && npm run build && release-it"
   },
   "author": "",
