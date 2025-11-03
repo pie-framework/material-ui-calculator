@@ -1,730 +1,631 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<div
-  className="Scientific-scientific-1"
->
+[
+  <style
+    dangerouslySetInnerHTML={
+      {
+        "__html": ".css-1i4ci1x{padding-left:1px;display:grid;grid-gap:1px;-webkit-flex:0.5;-ms-flex:0.5;flex:0.5;grid-template-columns:repeat(4, 1fr);}.css-1i4ci1x .scientific-pad{background-color:var(--material-ui-calc-secondary-light, #f8bbd0);}",
+      }
+    }
+    data-emotion="css 1i4ci1x"
+  />,
   <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
+    className="css-1i4ci1x"
   >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+    <style
+      dangerouslySetInnerHTML={
+        {
+          "__html": ".css-oblux8{background-color:var(--material-ui-calc-primary-main, #7986cb);}.css-oblux8 .MuiIconButton-root{width:100%;font-size:1.5rem;}",
+        }
+      }
+      data-emotion="css oblux8"
+    />
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <style
+        dangerouslySetInnerHTML={
+          {
+            "__html": ".css-xech33-MuiIconButton-root{text-align:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;font-size:1.5rem;padding:8px;border-radius:50%;color:rgba(0, 0, 0, 0.54);-webkit-transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;--IconButton-hoverBg:rgba(0, 0, 0, 0.04);padding:12px;font-size:1.75rem;}.css-xech33-MuiIconButton-root:hover{background-color:var(--IconButton-hoverBg);}@media (hover: none){.css-xech33-MuiIconButton-root:hover{background-color:transparent;}}.css-xech33-MuiIconButton-root.Mui-disabled{background-color:transparent;color:rgba(0, 0, 0, 0.26);}.css-xech33-MuiIconButton-root.MuiIconButton-loading{color:transparent;}",
+          }
+        }
+        data-emotion="css xech33-MuiIconButton-root"
+      />
+      <style
+        dangerouslySetInnerHTML={
+          {
+            "__html": ".css-154kngp-MuiButtonBase-root-MuiIconButton-root{display:-webkit-inline-box;display:-webkit-inline-flex;display:-ms-inline-flexbox;display:inline-flex;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:center;-ms-flex-pack:center;-webkit-justify-content:center;justify-content:center;position:relative;box-sizing:border-box;-webkit-tap-highlight-color:transparent;background-color:transparent;outline:0;border:0;margin:0;border-radius:0;padding:0;cursor:pointer;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;vertical-align:middle;-moz-appearance:none;-webkit-appearance:none;-webkit-text-decoration:none;text-decoration:none;color:inherit;text-align:center;-webkit-flex:0 0 auto;-ms-flex:0 0 auto;flex:0 0 auto;font-size:1.5rem;padding:8px;border-radius:50%;color:rgba(0, 0, 0, 0.54);-webkit-transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;transition:background-color 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;--IconButton-hoverBg:rgba(0, 0, 0, 0.04);padding:12px;font-size:1.75rem;}.css-154kngp-MuiButtonBase-root-MuiIconButton-root::-moz-focus-inner{border-style:none;}.css-154kngp-MuiButtonBase-root-MuiIconButton-root.Mui-disabled{pointer-events:none;cursor:default;}@media print{.css-154kngp-MuiButtonBase-root-MuiIconButton-root{-webkit-print-color-adjust:exact;color-adjust:exact;}}.css-154kngp-MuiButtonBase-root-MuiIconButton-root:hover{background-color:var(--IconButton-hoverBg);}@media (hover: none){.css-154kngp-MuiButtonBase-root-MuiIconButton-root:hover{background-color:transparent;}}.css-154kngp-MuiButtonBase-root-MuiIconButton-root.Mui-disabled{background-color:transparent;color:rgba(0, 0, 0, 0.26);}.css-154kngp-MuiButtonBase-root-MuiIconButton-root.MuiIconButton-loading{color:transparent;}",
+          }
+        }
+        data-emotion="css 154kngp-MuiButtonBase-root-MuiIconButton-root"
+      />
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "(",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": ")",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "π",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "log",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "sin",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "cos",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "tan",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "ln",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "asin",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "acos",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "atan",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "n!",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "√",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "x²",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "x³",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "x<sup>y</sup>",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "1/x",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "e",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-  <div
-    className="Pad-pad-3 Scientific-pad-2"
-    style={undefined}
-  >
-    <button
-      className="MuiButtonBase-root-11 MuiIconButton-root-5 Pad-button-4"
-      disabled={false}
-      onBlur={[Function]}
-      onClick={[Function]}
-      onContextMenu={[Function]}
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onKeyUp={[Function]}
-      onMouseDown={[Function]}
-      onMouseLeave={[Function]}
-      onMouseUp={[Function]}
-      onTouchEnd={[Function]}
-      onTouchMove={[Function]}
-      onTouchStart={[Function]}
-      tabIndex="-1"
-      type="button"
+      </button>
+    </div>
+    <div
+      className="scientific-pad css-oblux8"
     >
-      <span
-        className="MuiIconButton-label-10"
+      <button
+        className="MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeLarge css-154kngp-MuiButtonBase-root-MuiIconButton-root"
+        disabled={null}
+        onBlur={[Function]}
+        onClick={[Function]}
+        onContextMenu={[Function]}
+        onDragLeave={[Function]}
+        onFocus={[Function]}
+        onKeyDown={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseLeave={[Function]}
+        onMouseUp={[Function]}
+        onTouchEnd={[Function]}
+        onTouchMove={[Function]}
+        onTouchStart={[Function]}
+        tabIndex="-1"
+        type="button"
       >
         <div
           dangerouslySetInnerHTML={
-            Object {
+            {
               "__html": "abs",
             }
           }
         />
-      </span>
-      <span
-        className="MuiTouchRipple-root-14"
-      />
-    </button>
-  </div>
-</div>
+      </button>
+    </div>
+  </div>,
+]
 `;
