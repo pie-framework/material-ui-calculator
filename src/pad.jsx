@@ -7,7 +7,8 @@ import * as colors from './colors';
 const StyledPad = styled('div')(() => ({
   backgroundColor: colors.primary.main,
   '& .MuiIconButton-root': {
-    width: '100%'
+    width: '100%',
+    fontSize: '1.5rem',
   }
 }));
 

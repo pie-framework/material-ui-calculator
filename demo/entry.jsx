@@ -74,7 +74,7 @@ class DemoCalc extends React.Component {
 
     return (
       <DemoCalcRoot>
-        <Typography variant="h4">{mode}</Typography>
+        <Typography>{mode}</Typography>
         <div className="row">
           <Calculator
             mode={mode}
@@ -141,7 +141,7 @@ class Demo extends React.Component {
     return (
       <DemoRoot>
         <div className="top-row">
-          <Typography variant="h2">material-ui-calculator</Typography>
+          <Typography>material-ui-calculator</Typography>
           <IconButton onClick={this.onGithubClick} size="large"><Github /></IconButton>
         </div>
         <div className="demo">
