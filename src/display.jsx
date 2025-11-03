@@ -1,13 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
+import { styled } from '@mui/material/styles';
 import AngleMode from './angle-mode';
 import * as colors from './colors';
 
+const StyledDisplay = styled('div')(({ theme, focused, error }) => ({
+  display: 'flex',
+  backgroundColor: colors.primary.light,
+  padding: theme.spacing(2),
+  transition: 'background-color 200ms linear',
+  textAlign: 'right',
+  position: 'relative',
+  boxShadow: '0 3px 3px rgba(0, 0, 0, 0.1)',
+  borderBottom: focused ? 'solid 1px rgba(0,0,0,1.0)' : 'solid 1px rgba(0,0,0,0.0)',
+  '& .angle-mode': {
+    alignSelf: 'center'
+  },
+  '& .expr': {
+    flex: 1,
+    paddingLeft: theme.spacing(1)
+  }
+}));
+
 export class Display extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     angleMode: PropTypes.oneOf(['deg', 'rad']),
     onAngleModeChange: PropTypes.func.isRequired,
     children: PropTypes.oneOfType([
@@ -21,7 +37,6 @@ export class Display extends React.Component {
 
   render() {
     const {
-      classes,
       angleMode,
       onAngleModeChange,
       children,
@@ -30,48 +45,19 @@ export class Display extends React.Component {
       showAngleMode
     } = this.props;
 
-    const names = classNames(
-      classes.display,
-      focused && classes.focused,
-      error && classes.error
-    );
     return (
-      <div className={names}>
+      <StyledDisplay focused={focused} error={error}>
         {showAngleMode && (
           <AngleMode
-            className={classes.angleMode}
+            className="angle-mode"
             angleMode={angleMode}
             onChange={onAngleModeChange}
           />
         )}
-        <div className={classes.expr}>{children} </div>
-      </div>
+        <div className="expr">{children} </div>
+      </StyledDisplay>
     );
   }
 }
 
-const styles = theme => ({
-  angleMode: {
-    alignSelf: 'center'
-  },
-  display: {
-    display: 'flex',
-    backgroundColor: colors.primary.light,
-    padding: theme.spacing.unit * 2,
-    transition: 'background-color 200ms linear',
-    textAlign: 'right',
-    position: 'relative',
-    boxShadow: '0 3px 3px rgba(0, 0, 0, 0.1)',
-    borderBottom: 'solid 1px rgba(0,0,0,0.0)'
-  },
-  focused: {
-    borderBottom: 'solid 1px rgba(0,0,0,1.0)'
-  },
-  error: {},
-  expr: {
-    flex: 1,
-    paddingLeft: theme.spacing.unit
-  }
-});
-
-export default withStyles(styles)(Display);
+export default Display;

@@ -1,27 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
+import { styled } from '@mui/material/styles';
 import * as colors from './colors';
 
-const Angle = withStyles(theme => ({
-  mode: {
-    cursor: 'pointer',
-    fontFamily: theme.typography.fontFamily,
-    textTransform: 'uppercase',
-    color: colors.disabled
-  },
-  active: {
-    color: colors.primary.main
-  }
-}))(({ classes, onChange, type, angleMode }) => (
-  <div
+const AngleDiv = styled('div')(({ theme, active }) => ({
+  cursor: 'pointer',
+  fontFamily: theme.typography.fontFamily,
+  textTransform: 'uppercase',
+  color: active ? colors.primary.main : colors.disabled
+}));
+
+const Angle = ({ onChange, type, angleMode }) => (
+  <AngleDiv
     onClick={() => onChange(type)}
-    className={classNames(classes.mode, angleMode === type && classes.active)}
+    active={angleMode === type}
   >
     {type}
-  </div>
-));
+  </AngleDiv>
+);
 
 const AngleMode = ({ className, angleMode, onChange }) => (
   <div className={className}>

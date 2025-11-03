@@ -1,7 +1,4 @@
-import pink from '@material-ui/core/colors/pink';
-import indigo from '@material-ui/core/colors/indigo';
-import grey from '@material-ui/core/colors/grey';
-import red from '@material-ui/core/colors/red';
+import { pink, indigo, grey, red } from '@mui/material/colors';
 
 const v = (name, fallback) => `var(--material-ui-calc-${name}, ${fallback})`;
 
