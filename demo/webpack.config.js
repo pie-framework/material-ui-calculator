@@ -17,9 +17,8 @@ module.exports = {
             options: {
               babelrc: false,
               presets: [
-                'react',
-                'env',
-                'stage-0'
+                '@babel/preset-react',
+                '@babel/preset-env'
               ]
             }
           }

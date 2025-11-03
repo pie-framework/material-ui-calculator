@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import Pad from './pad';
 import classNames from 'classnames';
 import { AngleInput, UnaryInput, Inputs, LogInput } from './symbols';
@@ -29,29 +29,38 @@ const items = [
   UnaryInput.ABS
 ];
 
+const StyledScientific = styled('div')(() => ({
+  paddingLeft: '1px',
+  display: 'grid',
+  gridGap: '1px',
+  flex: 0.5,
+  gridTemplateColumns: 'repeat(4, 1fr)',
+  '& .scientific-pad': {
+    backgroundColor: colors.secondary.light
+  }
+}));
+
 export class Scientific extends React.Component {
   static propTypes = {
     onInput: PropTypes.func.isRequired,
-    classes: PropTypes.object.isRequired,
     activeMode: PropTypes.oneOf(['deg', 'rad'])
   };
 
   render() {
-    const { onInput, classes, activeMode } = this.props;
+    const { onInput, activeMode } = this.props;
     return (
-      <div className={classes.scientific}>
+      <StyledScientific>
         {items.map((i, index) => {
           const props = typeof i === 'string' ? { label: i, value: i } : i;
           const active = props.label === activeMode;
+          const padClasses = classNames(
+            'scientific-pad',
+            i && i.kind,
+            active && 'active'
+          );
           return (
             <Pad
-              theme={{
-                root: classNames(
-                  classes.pad,
-                  i && classes[i.kind],
-                  active && classes.active
-                )
-              }}
+              className={padClasses}
               active={props.label === activeMode}
               onClick={onInput}
               key={index}
@@ -59,24 +68,9 @@ export class Scientific extends React.Component {
             />
           );
         })}
-      </div>
+      </StyledScientific>
     );
   }
 }
 
-Scientific.propTypes = {};
-
-const styles = () => ({
-  scientific: {
-    paddingLeft: '1px',
-    display: 'grid',
-    gridGap: '1px',
-    flex: 0.5,
-    gridTemplateColumns: 'repeat(4, 1fr)'
-  },
-  pad: {
-    backgroundColor: colors.secondary.light
-  }
-});
-
-export default withStyles(styles)(Scientific);
+export default Scientific;
