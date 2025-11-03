@@ -5,7 +5,7 @@ import SelectableInput from './selectable-input';
 import Scientific from './scientific';
 import { insertAt } from './utils';
 import { handleInput } from './math-input';
-import { withStyles } from '@material-ui/core/styles';
+import { styled } from '@mui/material/styles';
 import Basic from './basic';
 import Display from './display';
 import classNames from 'classnames';
@@ -15,6 +15,34 @@ export { SelectableInput };
 
 const log = debug('@pie-framework:material-ui-calculator');
 
+const StyledCalculator = styled('div')(({ mode }) => ({
+  backgroundColor: 'white',
+  maxWidth: mode === 'scientific' ? '600px' : '300px',
+  '& .selectable-input': {
+    width: '100%'
+  },
+  '& .input-root': {
+    width: '100%'
+  },
+  '& .input': {
+    width: '100%',
+    fontSize: '40px',
+    textAlign: 'right'
+  },
+  '& .input-error': {
+    color: colors.error
+  },
+  '& .pad-holder': {
+    display: 'flex'
+  },
+  '& .basic': {
+    color: 'green'
+  },
+  '& .only-basic': {
+    flex: '1'
+  }
+}));
+
 export class Calculator extends React.Component {
   static propTypes = {
     angleMode: PropTypes.oneOf(['deg', 'rad']).isRequired,
@@ -23,7 +51,6 @@ export class Calculator extends React.Component {
     onEvaluate: PropTypes.func.isRequired,
     error: PropTypes.object,
     onClearError: PropTypes.func,
-    classes: PropTypes.object.isRequired,
     mode: PropTypes.oneOf(['basic', 'scientific'])
   };
 
@@ -175,7 +202,7 @@ export class Calculator extends React.Component {
   };
 
   render() {
-    const { classes, mode, angleMode, onAngleModeChange, error } = this.props;
+    const { mode, angleMode, onAngleModeChange, error } = this.props;
     const {
       expr,
       selectionStart,
@@ -184,14 +211,8 @@ export class Calculator extends React.Component {
       focused
     } = this.state;
 
-    const names = classNames(
-      classes.calculator,
-      mode === 'scientific'
-        ? classes.scientificCalculator
-        : classes.basicCalculator
-    );
     return (
-      <div className={names}>
+      <StyledCalculator mode={mode}>
         <Display
           angleMode={angleMode}
           showAngleMode={mode === 'scientific'}
@@ -200,7 +221,7 @@ export class Calculator extends React.Component {
           error={error}
         >
           <SelectableInput
-            className={classes.selectableInput}
+            className="selectable-input"
             inputRef={r => (this.input = r)}
             onChange={this.onChange}
             onSelectionChange={this.onSelectionChange}
@@ -212,57 +233,24 @@ export class Calculator extends React.Component {
             onBlur={this.onBlur}
             superscript={superscript}
             theme={{
-              root: classes.root,
-              input: classNames(classes.input, error && classes.inputError)
+              root: "input-root",
+              input: classNames("input", error && "input-error")
             }}
           />
         </Display>
-        <div className={classes.padHolder}>
+        <div className="pad-holder">
           <Basic
             className={classNames(
-              classes.basic,
-              mode === 'basic' && classes.onlyBasic
+              "basic",
+              mode === 'basic' && "only-basic"
             )}
             onInput={this.onInput}
           />
           {mode === 'scientific' && <Scientific onInput={this.onInput} />}
         </div>
-      </div>
+      </StyledCalculator>
     );
   }
 }
 
-export default withStyles(() => ({
-  calculator: {
-    backgroundColor: 'white'
-  },
-  basicCalculator: {
-    maxWidth: '300px'
-  },
-  scientificCalculator: {
-    maxWidth: '600px'
-  },
-  selectableInput: {
-    width: '100%'
-  },
-  root: {
-    width: '100%'
-  },
-  input: {
-    width: '100%',
-    fontSize: '40px',
-    textAlign: 'right'
-  },
-  inputError: {
-    color: colors.error
-  },
-  padHolder: {
-    display: 'flex'
-  },
-  basic: {
-    color: 'green'
-  },
-  onlyBasic: {
-    flex: '1'
-  }
-}))(Calculator);
+export default Calculator;

@@ -1,48 +1,41 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
-import { withStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
+import { styled } from '@mui/material/styles';
+import IconButton from '@mui/material/IconButton';
 import * as colors from './colors';
 
-export const Pad = props => {
-  const { label, classes, theme, style, value, onClick } = props;
+const StyledPad = styled('div')(() => ({
+  backgroundColor: colors.primary.main,
+  '& .MuiIconButton-root': {
+    width: '100%'
+  }
+}));
 
-  const names = classNames(classes.pad, theme && theme.root);
+export const Pad = props => {
+  const { label, className, style, value, onClick } = props;
 
   const handleClick = () => {
     onClick(value);
   };
 
   return (
-    <div style={style} className={names}>
+    <StyledPad style={style} className={className}>
       <IconButton
         tabIndex="-1"
-        className={classes.button}
         onClick={handleClick}
-      >
+        size="large">
         <div dangerouslySetInnerHTML={{ __html: label }} />
       </IconButton>
-    </div>
+    </StyledPad>
   );
 };
 
 Pad.propTypes = {
   label: PropTypes.string.isRequired,
-  classes: PropTypes.object.isRequired,
-  theme: PropTypes.object,
+  className: PropTypes.string,
   style: PropTypes.object,
   value: PropTypes.string.isRequired,
   onClick: PropTypes.func.isRequired
 };
 
-export default withStyles(() => {
-  return {
-    pad: {
-      backgroundColor: colors.primary.main
-    },
-    button: {
-      width: '100%'
-    }
-  };
-})(Pad);
+export default Pad;

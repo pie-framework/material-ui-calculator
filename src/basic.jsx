@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
-import classNames from 'classnames';
+import { styled } from '@mui/material/styles';
 import Pad from './pad';
 
 const items = [
@@ -26,20 +25,28 @@ const items = [
   { label: '=', value: 'equals', kind: 'operator' }
 ];
 
+const StyledBasic = styled('div')(({ theme }) => ({
+  flex: 0.5,
+  gridGap: '1px',
+  width: '100%',
+  display: 'grid',
+  gridTemplateColumns: 'repeat(4, 1fr)',
+  '& .operator': {
+    backgroundColor: theme.palette.secondary.light
+  }
+}));
+
 export class Basic extends React.Component {
   static propTypes = {
-    classes: PropTypes.object.isRequired,
     onInput: PropTypes.func.isRequired,
     className: PropTypes.string
   };
 
   render() {
-    const { classes, onInput, className } = this.props;
-
-    const names = classNames(classes.pad, className);
+    const { onInput, className } = this.props;
 
     return (
-      <div className={names}>
+      <StyledBasic className={className}>
         {items.map((i, index) => {
           const props = typeof i === 'string' ? { label: i, value: i } : i;
           const positionStyle =
@@ -53,28 +60,15 @@ export class Basic extends React.Component {
             <Pad
               key={index}
               style={positionStyle}
-              theme={{
-                root: classes[i.kind]
-              }}
+              className={i.kind === 'operator' ? 'operator' : ''}
               {...props}
               onClick={onInput}
             />
           );
         })}
-      </div>
+      </StyledBasic>
     );
   }
 }
 
-export default withStyles(theme => ({
-  pad: {
-    flex: 0.5,
-    gridGap: '1px',
-    width: '100%',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)'
-  },
-  operator: {
-    backgroundColor: theme.palette.secondary.light
-  }
-}))(Basic);
+export default Basic;

@@ -3,7 +3,7 @@ import React from 'react';
 import SelectableInput from '../selectable-input';
 import Enzyme, { shallow } from 'enzyme';
 import Adapter from 'enzyme-adapter-react-16';
-import TextField from '@material-ui/core/TextField';
+import TextField from '@mui/material/TextField';
 
 Enzyme.configure({ adapter: new Adapter() });
 
